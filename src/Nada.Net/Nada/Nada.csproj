@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <EnablePackageValidation>true</EnablePackageValidation>
+    <Version>0.0.1.0</Version>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageIcon>packageicon.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+
+ <PropertyGroup>
+    <Authors>Thomas Ley</Authors>
+    <Description>A long description to explain the package</Description>
+
+    <!-- PackageProjectUrl is different from the repository URL. It can be a documentation
+         website or a website explaining the project -->
+    <PackageProjectUrl>https://thomasley.github.io/Nada.Net/</PackageProjectUrl>
+
+    <!-- A list of tags to help the search engine to understand the content of the package -->
+    <PackageTags>library</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DotNet.ReproducibleBuilds" Version="1.1.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <None Include="packageicon.png" Pack="true" PackagePath=""/>
+    <None Include="README.md" Pack="true" PackagePath=""/>
+  </ItemGroup>
+
+</Project>
