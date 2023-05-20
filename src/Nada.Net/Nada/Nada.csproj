@@ -14,13 +14,8 @@
 
  <PropertyGroup>
     <Authors>Thomas Ley</Authors>
-    <Description>A long description to explain the package</Description>
-
-    <!-- PackageProjectUrl is different from the repository URL. It can be a documentation
-         website or a website explaining the project -->
+    <Description>Nada is a package with a lot of useful extensions and methods.</Description>
     <PackageProjectUrl>https://thomasley.github.io/Nada.Net/</PackageProjectUrl>
-
-    <!-- A list of tags to help the search engine to understand the content of the package -->
     <PackageTags>library</PackageTags>
   </PropertyGroup>
 

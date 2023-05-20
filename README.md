@@ -1,13 +1,13 @@
 # NADA.Net
 
-[![NuGet Badge](https://buildstats.info/nuget/nada)](https://www.nuget.org/packages/Nada/)
+[![NuGet Badge](https://buildstats.info/nuget/Nada)](https://www.nuget.org/packages/Nada/)
 
 Yes, "not another dotnet api". 
 
 ## 
 
 ```cs
-# src/Nada.Net/Nada.Tests/Collections/TreeItemExtensionsTests.cs
+// src/Nada.Net/Nada.Tests/Collections/TreeItemExtensionsTests.cs
 ```
 
 # Stats
