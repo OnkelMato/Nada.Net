@@ -60,3 +60,27 @@ public void GenerateTree_Converts_List_To_Tree()
     roots.Skip(2).First().Item.Title.Should().Be("Empty");
 
 ```
+
+### Linq Extensions
+
+```cs
+var lst = new[] { "Avengers", "Hulk" };
+
+// check if the list is not empty
+if (lst.IsNullOrEmpty()) throw new Exception();
+
+// iterate with foreach over an IEnumerable
+lst.ForEach(Colsole.WriteLine);
+```
+
+### Dictionary Extensions
+
+```cs
+var dct = new Dictionary<string, object>() { { "Hulk", "Bruce" }, { "Iron Man", "Tony Stark" } };
+
+// existing value
+dct.AddOrUpdate("Hulk", "Bruce Banner");
+
+// new value
+dct.AddOrUpdate("Spiderman", "Peter Parker");
+```
