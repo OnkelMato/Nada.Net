@@ -1,24 +1,13 @@
-# nada.net
+---
+layout: post
+title:  "List to Tree converter"
+date:   2023-05-21 12:26:22 +0200
+categories: nada.net
+---
 
-Nada.net is "not another dotnet API" with the purpose of a function library with fully-tested functions.
-
-## Stats
-
-### SonarQube Code Analysis
-
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=ThomasLey_Nada.Net&metric=coverage)](https://sonarcloud.io/summary/new_code?id=ThomasLey_Nada.Net) [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=ThomasLey_Nada.Net&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=ThomasLey_Nada.Net)
-
-### Nuget Package Statistics
-
-[![NuGet Badge](https://buildstats.info/nuget/Nada)](https://www.nuget.org/packages/Nada/)
-
-## Examples
-
-### List-Tree-Converter
+# List to Tree Converter
 
 Converting a list view into a tree is not a big deal but requires code. `Nada.net` has an extension method that created a hierarchical structure based on a list with id and parent id.
-
-#### Convert a list to a tree
 
 ```cs
 // data class with an id and a parent id.
