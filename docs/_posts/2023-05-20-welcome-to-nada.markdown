@@ -13,4 +13,4 @@ Multiple nuget packages are available with a minimum of set dependencies.
 
 | Package | Framework 4.5 | .NET 7 |
 | - | - | - |
-| Nada | :o: | :white_check_mark: |
+| [nada](https://www.nuget.org/packages/Nada/) | :o: | :white_check_mark: |
