@@ -84,3 +84,21 @@ dct.AddOrUpdate("Hulk", "Bruce Banner");
 // new value
 dct.AddOrUpdate("Spiderman", "Peter Parker");
 ```
+
+### JStore
+
+The `JStore` can be used to read entities from json files. The implementation is simple and does not support foreign keys or filtering. The purpose is a simple entity store.
+
+```cs
+// read from file
+var fileReader = new FileReader();
+var sut = new JsonFileStoreContext(fileReader);
+var actual = sut.Get<Person>();
+```
+
+```cs
+// write to file
+var fileReader = new FileReader();
+var sut = new JsonFileStoreContext(fileReader);
+sut.Save<Person>(people);
+```
