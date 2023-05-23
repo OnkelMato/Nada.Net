@@ -1,12 +1,12 @@
 ﻿namespace Nada.Collections;
 
 /// <summary>
-/// Extension methods for list to tree conversion -and vice vera.
+///     Extension methods for list to tree conversion -and vice vera.
 /// </summary>
 public static class TreeItemExtensions
 {
     /// <summary>
-    /// Generates tree of items from item list
+    ///     Generates tree of items from item list
     /// </summary>
     /// <typeparam name="T">Type of item in collection</typeparam>
     /// <typeparam name="K">Type of parent_id</typeparam>
@@ -19,15 +19,13 @@ public static class TreeItemExtensions
         this IEnumerable<T> collection,
         Func<T, K> idSelector,
         Func<T, K> parentIdSelector,
-        K rootId = default(K))
+        K rootId = default)
     {
         foreach (var c in collection.Where(c => EqualityComparer<K>.Default.Equals(parentIdSelector(c), rootId)))
-        {
             yield return new TreeItem<T>
             {
                 Item = c,
                 Children = collection.GenerateTree(idSelector, parentIdSelector, idSelector(c))
             };
-        }
     }
 }
