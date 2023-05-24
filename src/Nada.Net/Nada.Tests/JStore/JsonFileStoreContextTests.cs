@@ -38,6 +38,9 @@ internal class JsonFileStoreContextTests
         }
     }
 
+    private class NotExisting
+    {
+    }
     private class Person
     {
         public Guid Id { get; set; }
@@ -71,5 +74,14 @@ internal class JsonFileStoreContextTests
         sut.Save<Person>(people);
 
         fileReader.PersonJsonSaved.Should().Be(expected);
+    }
+
+    [Test]
+    public void NotReThrow_FileStore_Exception()
+    {
+        var fileReader = new MockFileStore();
+        var sut = new JsonFileStoreContext(fileReader);
+        var a = () => { _= sut.Get<NotExisting>(); };
+        a.Should().Throw<FileNotFoundException>().WithMessage($"Cannot find file NotExisting.json");
     }
 }

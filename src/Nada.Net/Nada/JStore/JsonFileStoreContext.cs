@@ -21,19 +21,19 @@ public class JsonFileStoreContext : IStoreContext
     /// <summary>
     ///     Returns a list of <see cref="TClass" /> objects
     /// </summary>
-    public IEnumerable<TClass> Get<TClass>() where TClass : class
+    public IEnumerable<TClass>? Get<TClass>() where TClass : class
     {
         var filename = typeof(TClass).Name + ".json";
         var source = _fileStore.Read(filename);
 
-        return JsonSerializer.Deserialize<IEnumerable<TClass>>(source) ?? throw new Exception();
+        return JsonSerializer.Deserialize<IEnumerable<TClass>>(source);
     }
 
     public void Save<TClass>(IEnumerable<TClass> data)
     {
         var filename = typeof(TClass).Name + ".json";
 
-        var source = JsonSerializer.Serialize<IEnumerable<TClass>>(data) ?? throw new Exception();
+        var source = JsonSerializer.Serialize(data);
 
         _fileStore.Save(filename, source);
     }

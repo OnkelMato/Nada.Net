@@ -8,7 +8,7 @@ public interface IStoreContext
     /// <summary>
     /// Returns a list of <typeparam name="TClass" /> objects
     /// </summary>
-    IEnumerable<TClass> Get<TClass>() where TClass : class;
+    IEnumerable<TClass>? Get<TClass>() where TClass : class;
 
     /// <summary>
     /// Stores a list of <typeparam name="TClass" /> objects
