@@ -1,5 +1,5 @@
 ﻿using FluentAssertions;
-using MagicBox.Extensions;
+using Nada.Extensions;
 using NUnit.Framework;
 
 namespace Nada.Tests.Extensions;
