@@ -6,14 +6,14 @@ namespace Nada.JStore;
 /// 
 /// </summary>
 [ExcludeFromCodeCoverage(Justification = "Cannot be tested in an isolated test")]
-public class FileReader : IFileReader
+public class FileStore : IFileStore
 {
     private readonly string _root;
 
     /// <summary>
     /// 
     /// </summary>
-    public FileReader(string root)
+    public FileStore(string root)
     {
         _root = root;
     }

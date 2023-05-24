@@ -1,4 +1,4 @@
-﻿namespace MagicBox.Extensions;
+﻿namespace Nada.Extensions;
 
 public static class LinqExtensions
 {
