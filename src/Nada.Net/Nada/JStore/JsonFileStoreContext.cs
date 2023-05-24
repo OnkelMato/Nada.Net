@@ -7,15 +7,15 @@ namespace Nada.JStore;
 /// </summary>
 public class JsonFileStoreContext : IStoreContext
 {
-    private readonly IFileReader _fileReader;
+    private readonly IFileStore _fileStore;
 
     /// <summary>
     ///     Creates a new instance of <see cref="JsonFileStoreContext" />
     /// </summary>
-    /// <param name="fileReader">Instance of a file reader</param>
-    public JsonFileStoreContext(IFileReader fileReader)
+    /// <param name="fileStore">Instance of a file reader</param>
+    public JsonFileStoreContext(IFileStore fileStore)
     {
-        _fileReader = fileReader;
+        _fileStore = fileStore;
     }
 
     /// <summary>
@@ -24,7 +24,7 @@ public class JsonFileStoreContext : IStoreContext
     public IEnumerable<TClass> Get<TClass>() where TClass : class
     {
         var filename = typeof(TClass).Name + ".json";
-        var source = _fileReader.Read(filename);
+        var source = _fileStore.Read(filename);
 
         return JsonSerializer.Deserialize<IEnumerable<TClass>>(source) ?? throw new Exception();
     }
@@ -35,6 +35,6 @@ public class JsonFileStoreContext : IStoreContext
 
         var source = JsonSerializer.Serialize<IEnumerable<TClass>>(data) ?? throw new Exception();
 
-        _fileReader.Save(filename, source);
+        _fileStore.Save(filename, source);
     }
 }

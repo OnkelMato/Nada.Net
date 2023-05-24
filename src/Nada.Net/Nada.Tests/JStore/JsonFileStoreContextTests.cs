@@ -10,7 +10,7 @@ namespace Nada.Tests.JStore;
 internal class JsonFileStoreContextTests
 {
     [ExcludeFromCodeCoverage]
-    internal class MockFileReader : IFileReader
+    internal class MockFileStore : IFileStore
     {
         #region JsonExamples
 
@@ -51,7 +51,7 @@ internal class JsonFileStoreContextTests
         var person2 = new Person { Id = Guid.Parse("e2278fe6-390b-4633-8018-cf09a2b56e66"), Name = "Toni Stark" };
         var expected = new[] { person1, person2 };
 
-        var fileReader = new MockFileReader();
+        var fileReader = new MockFileStore();
         var sut = new JsonFileStoreContext(fileReader);
         var actual = sut.Get<Person>();
 
@@ -66,7 +66,7 @@ internal class JsonFileStoreContextTests
         var person2 = new Person { Id = Guid.Parse("aaaa8fe6-390b-4633-8018-cf09a2b56e66"), Name = "Toni" };
         var people = new[] { person1, person2 };
 
-        var fileReader = new MockFileReader();
+        var fileReader = new MockFileStore();
         var sut = new JsonFileStoreContext(fileReader);
         sut.Save<Person>(people);
 

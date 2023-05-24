@@ -91,14 +91,14 @@ The `JStore` can be used to read entities from json files. The implementation is
 
 ```cs
 // read from file
-var fileReader = new FileReader();
-var sut = new JsonFileStoreContext(fileReader);
+IFileStore fileReader = new FileReader();
+IStoreContext sut = new JsonFileStoreContext(fileReader);
 var actual = sut.Get<Person>();
 ```
 
 ```cs
 // write to file
-var fileReader = new FileReader();
-var sut = new JsonFileStoreContext(fileReader);
+IFileStore fileReader = new FileReader();
+IStoreContext sut = new JsonFileStoreContext(fileReader);
 sut.Save<Person>(people);
 ```

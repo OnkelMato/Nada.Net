@@ -3,7 +3,7 @@
 /// <summary>
 ///     Interface to read files from e.g. a file system.
 /// </summary>
-public interface IFileReader
+public interface IFileStore
 {
     /// <summary>
     /// </summary>
