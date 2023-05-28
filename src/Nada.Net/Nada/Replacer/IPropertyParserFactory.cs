@@ -21,11 +21,6 @@ public interface IPropertyParserFactory
     ///     Create an IPropertyParser instance with the given CultureInfo and an optional list of additional
     ///     <see cref="ITokenTypeHandler" /> types
     /// </summary>
-    /// <param name="cultureInfo">
-    ///     It is used when formatting <see cref="DateTime" />, <see cref="DateOnly" /> and
-    ///     <see cref="TimeOnly" /> types.
-    /// </param>
-    /// <param name="additionalHandlers">It is used to override existing or add new <see cref="ITokenTypeHandler" /> types</param>
     /// <returns>A new IPropertyParser implementation</returns>
-    IPropertyParser Create(CultureInfo cultureInfo, IEnumerable<Type> additionalHandlers);
+    IPropertyParser Create();
 }

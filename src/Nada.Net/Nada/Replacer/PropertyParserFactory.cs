@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using System.Reflection;
 using Nada.Replacer.Handlers;
 
 namespace Nada.Replacer;
@@ -11,8 +12,7 @@ public class PropertyParserFactory : IPropertyParserFactory
 
         var handlers = new List<ITokenTypeHandler>(additionalHandlers ?? Enumerable.Empty<ITokenTypeHandler>());
 
-        var internalHandlers = AppDomain.CurrentDomain.GetAssemblies()
-            .SelectMany(a => a.GetTypes())
+        var internalHandlers = Assembly.GetExecutingAssembly().GetTypes()
             .Where(t => typeof(ITokenTypeHandler).IsAssignableFrom(t) && !t.IsInterface && !t.IsAbstract &&
                         (t.IsPublic || t.IsNotPublic))
             .Select(type => InstantiateTokenTypeHandler(type, cultureInfo));
@@ -21,12 +21,17 @@ public class PropertyParserFactory : IPropertyParserFactory
         return new PropertyParser(handlers);
     }
 
-    public IPropertyParser Create(CultureInfo cultureInfo, IEnumerable<Type> additionalHandlers)
+    public IPropertyParser Create()
     {
-        if (additionalHandlers == null) throw new ArgumentNullException(nameof(cultureInfo));
+        var handlers = new List<ITokenTypeHandler>();
 
-        var instantiatedHandlers = additionalHandlers.Select(type => InstantiateTokenTypeHandler(type, cultureInfo));
-        return Create(cultureInfo, instantiatedHandlers);
+        var internalHandlers = Assembly.GetExecutingAssembly().GetTypes()
+            .Where(t => typeof(ITokenTypeHandler).IsAssignableFrom(t) && !t.IsInterface && !t.IsAbstract &&
+                        (t.IsPublic || t.IsNotPublic))
+            .Select(type => InstantiateTokenTypeHandler(type, CultureInfo.CurrentUICulture));
+
+        handlers.AddRange(internalHandlers);
+        return new PropertyParser(handlers);
     }
 
     private static ITokenTypeHandler InstantiateTokenTypeHandler(Type type, CultureInfo cultureInfo)

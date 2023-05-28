@@ -105,7 +105,7 @@ public class StringTests
 
         var outcome = t.Parse(template, dict);
 
-        outcome.Should().Be($"The task {Trim(dict["title"].ToString(), 10)} has been completed");
+        outcome.Should().Be($"The task {Trim(dict["title"], 10)} has been completed");
     }
 
     [Test]
@@ -125,7 +125,9 @@ public class StringTests
 
         var outcome = t.Parse(template, dict);
 
-        outcome.Should().Be($"The task {Trim(dict["title"].ToString(), 10)}, {Trim(dict["title2"].ToString(), 10)}, {Trim(dict["ti"].ToString(), 10)} have been completed");
+        outcome.Should()
+            .Be(
+                $"The task {Trim(dict["title"], 10)}, {Trim(dict["title2"], 10)}, {Trim(dict["ti"], 10)} have been completed");
     }
 
     [Test]
@@ -145,7 +147,9 @@ public class StringTests
 
         var outcome = t.Parse(template, dict);
 
-        outcome.Should().Be($"The task {Trim(dict["title"].ToString(), 10)}{Trim(dict["title2"].ToString(), 10)}{Trim(dict["ti"].ToString(), 10)} have been completed");
+        outcome.Should()
+            .Be(
+                $"The task {Trim(dict["title"], 10)}{Trim(dict["title2"], 10)}{Trim(dict["ti"], 10)} have been completed");
     }
 
     [Test]
@@ -163,7 +167,7 @@ public class StringTests
 
         var outcome = t.Parse(template, dict);
 
-        outcome.Should().Be($"The task {Trim(dict["title"].ToString(), 5)} has been completed");
+        outcome.Should().Be($"The task {Trim(dict["title"], 5)} has been completed");
     }
 
     [Test]
@@ -183,7 +187,9 @@ public class StringTests
 
         var outcome = t.Parse(template, dict);
 
-        outcome.Should().Be($"The task {Trim(dict["title"].ToString(), 6)} and {Trim(dict["title2"].ToString(), 6)} and {Trim(dict["ti"].ToString(), 6)} have been completed");
+        outcome.Should()
+            .Be(
+                $"The task {Trim(dict["title"], 6)} and {Trim(dict["title2"], 6)} and {Trim(dict["ti"], 6)} have been completed");
     }
 
     [Test]
@@ -203,7 +209,8 @@ public class StringTests
 
         var outcome = t.Parse(template, dict);
 
-        outcome.Should().Be($"The task {Trim(dict["title"].ToString(), 6)}{Trim(dict["title2"].ToString(), 6)}{Trim(dict["ti"].ToString(), 6)} have been completed");
+        outcome.Should()
+            .Be($"The task {Trim(dict["title"], 6)}{Trim(dict["title2"], 6)}{Trim(dict["ti"], 6)} have been completed");
     }
 
     [Test]
@@ -221,7 +228,7 @@ public class StringTests
 
         var outcome = t.Parse(template, dict);
 
-        outcome.Should().Be($"The task {Trim(dict["title"].ToString(), 6)} has been completed");
+        outcome.Should().Be($"The task {Trim(dict["title"], 6)} has been completed");
     }
 
     [Test]
@@ -239,7 +246,7 @@ public class StringTests
 
         var outcome = t.Parse(template, dict);
 
-        outcome.Should().Be($"The task {Trim(dict["title"].ToString(), 15)} has been completed");
+        outcome.Should().Be($"The task {Trim(dict["title"], 15)} has been completed");
     }
 
     [Test]
@@ -257,7 +264,7 @@ public class StringTests
 
         var outcome = t.Parse(template, dict);
 
-        outcome.Should().Be($"The task {Trim(dict["title"].ToString(), 1)} has been completed");
+        outcome.Should().Be($"The task {Trim(dict["title"], 1)} has been completed");
     }
 
     [Test]
@@ -275,7 +282,7 @@ public class StringTests
 
         var outcome = t.Parse(template, dict);
 
-        outcome.Should().Be($"The task {Trim(dict["title"].ToString(), 0)} has been completed");
+        outcome.Should().Be($"The task {Trim(dict["title"], 0)} has been completed");
     }
 
     [Test]
@@ -343,8 +350,10 @@ public class StringTests
 
     [Test]
     [TestCase(10, "<p>This is a <strong>long</strong> string that needs to be truncated.</p>", "<p>This is a…</p>")]
-    [TestCase(14, "<p>This is a <strong>long</strong> string that needs to be truncated.</p>", "<p>This is a <strong>lon…</strong></p>")]
-    [TestCase(17, "This is a test <a href='xxx'>This is a link</a>. And here we continue", "This is a test <a href='xxx'>T…</a>")]
+    [TestCase(14, "<p>This is a <strong>long</strong> string that needs to be truncated.</p>",
+        "<p>This is a <strong>lon…</strong></p>")]
+    [TestCase(17, "This is a test <a href='xxx'>This is a link</a>. And here we continue",
+        "This is a test <a href='xxx'>T…</a>")]
     public void Truncate_Html(int length, string value, string result)
     {
         var dict = new Dictionary<string, string>

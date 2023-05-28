@@ -3,7 +3,7 @@ using Nada.Replacer.Handlers;
 
 namespace Nada.Replacer;
 
-public class PropertyParser : IPropertyParser
+internal class PropertyParser : IPropertyParser
 {
     public PropertyParser(IEnumerable<ITokenTypeHandler>? tokenTypeHandlers)
     {

@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using Nada.Extensions;
 using Nada.Replacer;
 using Nada.Replacer.Handlers;
 using NUnit.Framework;

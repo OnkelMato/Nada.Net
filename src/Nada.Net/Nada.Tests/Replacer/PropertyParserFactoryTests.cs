@@ -3,6 +3,7 @@ using FluentAssertions;
 using Nada.Replacer;
 using Nada.Replacer.Handlers;
 using NUnit.Framework;
+// ReSharper disable InconsistentNaming
 
 namespace Nada.Tests.Replacer;
 
@@ -40,13 +41,13 @@ public class PropertyParserFactoryTests
 
         var parser = factory.Create(CultureInfo.InvariantCulture,
             new[] { new MockTokenTypeHandler_CultureInfoConstructor(CultureInfo.InvariantCulture) });
-        var Property = parser.Parse("Here some replaced string: {string|key}", replacements);
+        var property = parser.Parse("Here some replaced string: {string|key}", replacements);
 
-        Property.Should().Be("Here some replaced string: cultureInfo_key_test");
+        property.Should().Be("Here some replaced string: cultureInfo_key_test");
     }
 
     [Test]
-    public void Create_Using_Handler_With_CultureInfo_Constructor_As_Type()
+    public void Create_Using_Handler_Without_Parameter()
     {
         var factory = new PropertyParserFactory();
         var replacements = new Dictionary<string, string>
@@ -54,11 +55,10 @@ public class PropertyParserFactoryTests
             { "key", "test" }
         };
 
-        var parser = factory.Create(CultureInfo.InvariantCulture,
-            new[] { typeof(MockTokenTypeHandler_CultureInfoConstructor) });
-        var Property = parser.Parse("Here some replaced string: {string|key}", replacements);
+        var parser = factory.Create();
+        var property = parser.Parse("Here some replaced string: {string|key}", replacements);
 
-        Property.Should().Be("Here some replaced string: cultureInfo_key_test");
+        property.Should().Be("Here some replaced string: test");
     }
 
     [Test]
@@ -72,25 +72,9 @@ public class PropertyParserFactoryTests
 
         var parser = factory.Create(CultureInfo.InvariantCulture,
             new[] { new MockTokenTypeHandler_EmptyConstructor() });
-        var Property = parser.Parse("Here some replaced string: {string|key}", replacements);
+        var property = parser.Parse("Here some replaced string: {string|key}", replacements);
 
-        Property.Should().Be("Here some replaced string: empty_key_test");
-    }
-
-    [Test]
-    public void Create_Using_Handler_With_Empty_Constructor_As_Type()
-    {
-        var factory = new PropertyParserFactory();
-        var replacements = new Dictionary<string, string>
-        {
-            { "key", "test" }
-        };
-
-        var parser = factory.Create(CultureInfo.InvariantCulture,
-            new[] { typeof(MockTokenTypeHandler_EmptyConstructor) });
-        var Property = parser.Parse("Here some replaced string: {string|key}", replacements);
-
-        Property.Should().Be("Here some replaced string: empty_key_test");
+        property.Should().Be("Here some replaced string: empty_key_test");
     }
 
     [Test]
@@ -104,24 +88,15 @@ public class PropertyParserFactoryTests
 
         var parser = factory.Create(CultureInfo.InvariantCulture,
             new[] { new MockTokenTypeHandler_UnusableConstructor_For_Reflection("mock") });
-        var Property = parser.Parse("Here some replaced string: {string|key}", replacements);
+        var property = parser.Parse("Here some replaced string: {string|key}", replacements);
 
-        Property.Should().Be("Here some replaced string: unusable_for_reflection_key_test");
+        property.Should().Be("Here some replaced string: unusable_for_reflection_key_test");
     }
 
-    [Test]
-    public void Create_Using_Handler_With_Unusable_Constructor_As_Type()
-    {
-        var factory = new PropertyParserFactory();
-
-        var action = () => factory.Create(CultureInfo.InvariantCulture,
-            new[] { typeof(MockTokenTypeHandler_UnusableConstructor_For_Reflection) });
-
-        action.Should().Throw<MissingMemberException>();
-    }
 
     private class MockTokenTypeHandler_CultureInfoConstructor : ITokenTypeHandler
     {
+        // ReSharper disable once ParameterOnlyUsedForPreconditionCheck.Local
         public MockTokenTypeHandler_CultureInfoConstructor(CultureInfo cultureInfo)
         {
             if (cultureInfo == null) throw new ArgumentNullException(nameof(cultureInfo));
@@ -157,6 +132,7 @@ public class PropertyParserFactoryTests
 
     private class MockTokenTypeHandler_UnusableConstructor_For_Reflection : ITokenTypeHandler
     {
+        // ReSharper disable once UnusedParameter.Local
         public MockTokenTypeHandler_UnusableConstructor_For_Reflection(string mockParameter)
         {
         }
