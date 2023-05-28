@@ -3,7 +3,6 @@
 namespace Nada.JStore;
 
 /// <summary>
-/// 
 /// </summary>
 [ExcludeFromCodeCoverage(Justification = "Cannot be tested in an isolated test")]
 public class FileStore : IFileStore
@@ -11,7 +10,6 @@ public class FileStore : IFileStore
     private readonly string _root;
 
     /// <summary>
-    /// 
     /// </summary>
     public FileStore(string root)
     {
@@ -19,7 +17,6 @@ public class FileStore : IFileStore
     }
 
     /// <summary>
-    /// 
     /// </summary>
     /// <param name="path"></param>
     /// <returns></returns>
@@ -29,7 +26,6 @@ public class FileStore : IFileStore
     }
 
     /// <summary>
-    /// 
     /// </summary>
     /// <param name="path"></param>
     /// <param name="source"></param>

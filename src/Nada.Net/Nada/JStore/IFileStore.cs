@@ -11,7 +11,6 @@ public interface IFileStore
     string Read(string path);
 
     /// <summary>
-    /// 
     /// </summary>
     /// <param name="path"></param>
     /// <param name="source"></param>
