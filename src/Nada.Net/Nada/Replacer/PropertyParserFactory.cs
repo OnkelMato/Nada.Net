@@ -36,8 +36,6 @@ public class PropertyParserFactory : IPropertyParserFactory
 
     private static ITokenTypeHandler InstantiateTokenTypeHandler(Type type, CultureInfo cultureInfo)
     {
-        if (!type.IsAssignableTo(typeof(ITokenTypeHandler)))
-            throw new ArgumentException($"Type {type} is not assignable to {typeof(ITokenTypeHandler)}");
         if (type.IsAbstract) throw new ArgumentException($"Type {type} cannot be abstract");
 
         var constructor = type.GetConstructor(new[] { typeof(CultureInfo) });

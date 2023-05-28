@@ -1,8 +1,11 @@
-﻿namespace Nada.Extensions;
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Nada.Extensions;
 
 /// <summary>
 ///     Allow strings to be truncated
 /// </summary>
+[ExcludeFromCodeCoverage(Justification = "Copied from Humanizr project")]
 public static class TruncateExtensions
 {
     /// <summary>

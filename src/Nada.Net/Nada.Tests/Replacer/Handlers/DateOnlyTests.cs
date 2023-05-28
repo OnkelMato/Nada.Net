@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using FluentAssertions;
 using Nada.Replacer;
@@ -9,23 +10,6 @@ namespace Nada.Tests.Replacer.Handlers;
 
 public class DateOnlyTests
 {
-    private static IEnumerable GetTestCaseDataFor_Replace_With_HumanReadable()
-    {
-        yield return new TestCaseData(DateOnly.FromDateTime(DateTime.Now)).SetName("Replace_With_HumanReadable (now)");
-        yield return new TestCaseData(DateOnly.FromDateTime(DateTime.Now.AddDays(5))).SetName(
-            "Replace_With_HumanReadable (now + 5days)");
-        yield return new TestCaseData(DateOnly.FromDateTime(DateTime.Now.AddMonths(5))).SetName(
-            "Replace_With_HumanReadable (now + 5months)");
-        yield return new TestCaseData(DateOnly.FromDateTime(DateTime.Now.AddYears(5))).SetName(
-            "Replace_With_HumanReadable (now + 5years)");
-        yield return new TestCaseData(DateOnly.FromDateTime(DateTime.Now.AddDays(-5))).SetName(
-            "Replace_With_HumanReadable (now - 5 days)");
-        yield return new TestCaseData(DateOnly.FromDateTime(DateTime.Now.AddMonths(-5))).SetName(
-            "Replace_With_HumanReadable (now - 5 months)");
-        yield return new TestCaseData(DateOnly.FromDateTime(DateTime.Now.AddYears(-5))).SetName(
-            "Replace_With_HumanReadable (now - 5years)");
-    }
-
     [Test]
     public void Replace_Without_Format_Specified()
     {

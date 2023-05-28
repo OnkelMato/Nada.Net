@@ -1,9 +1,12 @@
-﻿namespace Nada.Extensions;
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Nada.Extensions;
 
 /// <summary>
 ///     Truncate a string to a fixed length.
 ///     This is a copy of the Humanizr functionality
 /// </summary>
+[ExcludeFromCodeCoverage(Justification = "Copied from Humanizr project")]
 internal class FixedLengthTruncator
 {
     public string Truncate(string value, int length, string truncationString,

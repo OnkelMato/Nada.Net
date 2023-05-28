@@ -9,24 +9,6 @@ namespace Nada.Tests.Replacer.Handlers;
 
 public class DateTimeTests
 {
-    private static IEnumerable GetTestCaseDataFor_Replace_With_HumanReadable()
-    {
-        yield return new TestCaseData(DateTime.Now).SetName("Replace_With_HumanReadable (now)");
-        yield return new TestCaseData(DateTime.Now.AddSeconds(35)).SetName("Replace_With_HumanReadable (now + 35s)");
-        yield return new TestCaseData(DateTime.Now.AddMinutes(35)).SetName("Replace_With_HumanReadable (now + 35min)");
-        yield return new TestCaseData(DateTime.Now.AddHours(5)).SetName("Replace_With_HumanReadable (now + 5h)");
-        yield return new TestCaseData(DateTime.Now.AddDays(5)).SetName("Replace_With_HumanReadable (now + 5days)");
-        yield return new TestCaseData(DateTime.Now.AddMonths(5)).SetName("Replace_With_HumanReadable (now + 5months)");
-        yield return new TestCaseData(DateTime.Now.AddYears(5)).SetName("Replace_With_HumanReadable (now + 5years)");
-        yield return new TestCaseData(DateTime.Now.AddSeconds(-35)).SetName("Replace_With_HumanReadable (now - 35s)");
-        yield return new TestCaseData(DateTime.Now.AddMinutes(-35)).SetName("Replace_With_HumanReadable (now - 35min)");
-        yield return new TestCaseData(DateTime.Now.AddHours(-5)).SetName("Replace_With_HumanReadable (now - 5h)");
-        yield return new TestCaseData(DateTime.Now.AddDays(-5)).SetName("Replace_With_HumanReadable (now - 5days)");
-        yield return new TestCaseData(DateTime.Now.AddMonths(-5)).SetName("Replace_With_HumanReadable (now - 5months)");
-        yield return new TestCaseData(DateTime.Now.AddYears(-5)).SetName("Replace_With_HumanReadable (now - 5years)");
-    }
-
-
     [Test]
     public void Replace_Without_Format_Specified()
     {

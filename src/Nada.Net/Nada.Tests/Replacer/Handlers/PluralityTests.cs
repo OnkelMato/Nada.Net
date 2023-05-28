@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using System.Diagnostics.CodeAnalysis;
+using FluentAssertions;
 using Nada.Replacer;
 using Nada.Replacer.Handlers;
 using NUnit.Framework;
@@ -7,6 +8,7 @@ namespace Nada.Tests.Replacer.Handlers;
 
 public class PluralityTests
 {
+    [ExcludeFromCodeCoverage]
     private static IEnumerable<dynamic> GetNumber1()
     {
         return new ValueType[]
@@ -22,6 +24,7 @@ public class PluralityTests
         };
     }
 
+    [ExcludeFromCodeCoverage]
     private static IEnumerable<dynamic> GetNumber5()
     {
         return new ValueType[]
@@ -37,7 +40,8 @@ public class PluralityTests
         };
     }
 
-    private static IEnumerable<dynamic> GetGloatingNumber1()
+    [ExcludeFromCodeCoverage]
+    private static IEnumerable<dynamic> GetFloatingNumber1()
     {
         return new ValueType[]
         {
@@ -47,6 +51,7 @@ public class PluralityTests
         };
     }
 
+    [ExcludeFromCodeCoverage]
     private static IEnumerable<dynamic> GetFloatingNumber10000001()
     {
         return new ValueType[]
@@ -57,6 +62,7 @@ public class PluralityTests
         };
     }
 
+    [ExcludeFromCodeCoverage]
     private static IEnumerable<dynamic> GetFloatingNumber5()
     {
         return new ValueType[]
@@ -69,7 +75,7 @@ public class PluralityTests
 
     [Test]
     [TestCaseSource(nameof(GetNumber1))]
-    [TestCaseSource(nameof(GetGloatingNumber1))]
+    [TestCaseSource(nameof(GetFloatingNumber1))]
     public void As_Singular(dynamic numberValue)
     {
         var dict = new Dictionary<string, string>

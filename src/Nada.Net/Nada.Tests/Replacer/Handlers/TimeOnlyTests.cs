@@ -9,24 +9,6 @@ namespace Nada.Tests.Replacer.Handlers;
 
 public class TimeOnlyTests
 {
-    private static IEnumerable GetTestCaseDataFor_Replace_With_HumanReadable()
-    {
-        yield return new TestCaseData(TimeOnly.FromDateTime(DateTime.Now)).SetName("Replace_With_HumanReadable (now)");
-        yield return new TestCaseData(TimeOnly.FromDateTime(DateTime.Now.AddSeconds(35))).SetName(
-            "Replace_With_HumanReadable (now + 35s)");
-        yield return new TestCaseData(TimeOnly.FromDateTime(DateTime.Now.AddMinutes(35))).SetName(
-            "Replace_With_HumanReadable (now + 35min)");
-        yield return new TestCaseData(TimeOnly.FromDateTime(DateTime.Now.AddHours(5))).SetName(
-            "Replace_With_HumanReadable (now + 5h)");
-        yield return new TestCaseData(TimeOnly.FromDateTime(DateTime.Now.AddSeconds(-35))).SetName(
-            "Replace_With_HumanReadable (now -35s)");
-        yield return new TestCaseData(TimeOnly.FromDateTime(DateTime.Now.AddMinutes(-35))).SetName(
-            "Replace_With_HumanReadable (now - 35min)");
-        yield return new TestCaseData(TimeOnly.FromDateTime(DateTime.Now.AddHours(-5))).SetName(
-            "Replace_With_HumanReadable (now - 5h)");
-    }
-
-
     [Test]
     public void Replace_Without_Format_Specified()
     {
