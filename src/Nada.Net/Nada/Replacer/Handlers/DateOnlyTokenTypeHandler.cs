@@ -13,7 +13,7 @@ internal class DateOnlyTokenTypeHandler : ITokenTypeHandler
 
     public bool CanHandle(string dataType)
     {
-        return string.Equals(dataType, "dateonly", StringComparison.OrdinalIgnoreCase);
+        return string.Equals(dataType, "dateonly", StringComparison.OrdinalIgnoreCase) || string.Equals(dataType, "do", StringComparison.OrdinalIgnoreCase);
     }
 
     public TokenHandlerResult Handle(string key, string value, string additionalInformation,

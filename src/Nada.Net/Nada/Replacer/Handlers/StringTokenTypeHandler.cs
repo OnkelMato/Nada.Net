@@ -8,7 +8,7 @@ internal class StringTokenTypeHandler : ITokenTypeHandler
 {
     public bool CanHandle(string dataType)
     {
-        return string.Equals(dataType, "string", StringComparison.OrdinalIgnoreCase);
+        return string.Equals(dataType, "string", StringComparison.OrdinalIgnoreCase) || string.Equals(dataType, "s", StringComparison.OrdinalIgnoreCase);
     }
 
     public TokenHandlerResult Handle(string key, string value, string additionalInformation,

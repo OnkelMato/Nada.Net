@@ -13,7 +13,7 @@ internal class DateTimeTokenTypeHandler : ITokenTypeHandler
 
     public bool CanHandle(string dataType)
     {
-        return string.Equals(dataType, "datetime", StringComparison.OrdinalIgnoreCase);
+        return string.Equals(dataType, "datetime", StringComparison.OrdinalIgnoreCase) || string.Equals(dataType, "dt", StringComparison.OrdinalIgnoreCase);
     }
 
     public TokenHandlerResult Handle(string key, string value, string additionalInformation,

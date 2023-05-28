@@ -4,7 +4,7 @@ internal class LinkTokenTypeHandler : ITokenTypeHandler
 {
     public bool CanHandle(string dataType)
     {
-        return string.Equals(dataType, "link", StringComparison.OrdinalIgnoreCase);
+        return string.Equals(dataType, "link", StringComparison.OrdinalIgnoreCase) || string.Equals(dataType, "l", StringComparison.OrdinalIgnoreCase);
     }
 
     public TokenHandlerResult Handle(string key, string value, string additionalInformation,
