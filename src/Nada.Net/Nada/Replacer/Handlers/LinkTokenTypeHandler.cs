@@ -1,4 +1,4 @@
-﻿namespace Nada.Replacer.Handlers;
+﻿namespace Nada.Core.Replacer.Handlers;
 
 internal class LinkTokenTypeHandler : ITokenTypeHandler
 {

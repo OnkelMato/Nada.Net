@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace Nada.Extensions;
+namespace Nada.Core.Extensions;
 
 /// <summary>
 ///     Allow strings to be truncated

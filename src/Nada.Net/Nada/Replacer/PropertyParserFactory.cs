@@ -1,8 +1,8 @@
 ﻿using System.Globalization;
 using System.Reflection;
-using Nada.Replacer.Handlers;
+using Nada.Core.Replacer.Handlers;
 
-namespace Nada.Replacer;
+namespace Nada.Core.Replacer;
 
 public class PropertyParserFactory : IPropertyParserFactory
 {

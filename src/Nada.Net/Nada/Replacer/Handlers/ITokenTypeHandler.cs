@@ -1,4 +1,4 @@
-﻿namespace Nada.Replacer.Handlers;
+﻿namespace Nada.Core.Replacer.Handlers;
 
 public interface ITokenTypeHandler
 {

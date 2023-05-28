@@ -1,4 +1,4 @@
-﻿namespace Nada.JStore;
+﻿namespace Nada.Core.JStore;
 
 /// <summary>
 ///     Interface to read files from e.g. a file system.

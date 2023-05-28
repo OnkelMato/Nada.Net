@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 
-namespace Nada.JStore;
+namespace Nada.Core.JStore;
 
 /// <summary>
 ///     Implementation for a store based on json and files

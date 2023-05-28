@@ -1,4 +1,4 @@
-﻿namespace Nada.Collections;
+﻿namespace Nada.Core.Collections;
 
 /// <summary>
 ///     Extension methods for list to tree conversion -and vice vera.

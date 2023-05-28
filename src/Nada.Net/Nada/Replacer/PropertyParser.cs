@@ -1,7 +1,7 @@
 ﻿using System.Text.RegularExpressions;
-using Nada.Replacer.Handlers;
+using Nada.Core.Replacer.Handlers;
 
-namespace Nada.Replacer;
+namespace Nada.Core.Replacer;
 
 internal class PropertyParser : IPropertyParser
 {

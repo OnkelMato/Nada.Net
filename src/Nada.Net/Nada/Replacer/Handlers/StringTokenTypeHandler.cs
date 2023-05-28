@@ -1,8 +1,8 @@
 ﻿using System.Text;
 using System.Text.RegularExpressions;
-using Nada.Extensions;
+using Nada.Core.Extensions;
 
-namespace Nada.Replacer.Handlers;
+namespace Nada.Core.Replacer.Handlers;
 
 internal class StringTokenTypeHandler : ITokenTypeHandler
 {

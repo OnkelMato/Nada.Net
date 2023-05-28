@@ -1,10 +1,10 @@
 ﻿using FluentAssertions;
-using Nada.Extensions;
-using Nada.Replacer;
-using Nada.Replacer.Handlers;
+using Nada.Core.Extensions;
+using Nada.Core.Replacer;
+using Nada.Core.Replacer.Handlers;
 using NUnit.Framework;
 
-namespace Nada.Tests.Replacer;
+namespace Nada.Core.Tests.Replacer;
 
 public class PropertyParserTests
 {

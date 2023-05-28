@@ -1,4 +1,4 @@
-﻿namespace Nada.JStore;
+﻿namespace Nada.Core.JStore;
 
 /// <summary>
 ///     Interface to convert a data source to objects and write object back to the data store

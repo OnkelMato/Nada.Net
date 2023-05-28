@@ -1,9 +1,9 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using FluentAssertions;
-using Nada.JStore;
+using Nada.Core.JStore;
 using NUnit.Framework;
 
-namespace Nada.Tests.JStore;
+namespace Nada.Core.Tests.JStore;
 
 [TestFixture]
 internal class JsonFileStoreContextTests

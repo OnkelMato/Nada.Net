@@ -1,8 +1,8 @@
 ﻿using FluentAssertions;
-using Nada.Extensions;
+using Nada.Core.Extensions;
 using NUnit.Framework;
 
-namespace Nada.Tests.Extensions;
+namespace Nada.Core.Tests.Extensions;
 
 [TestFixture]
 internal class LinqExtensionsTests

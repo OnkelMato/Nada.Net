@@ -1,8 +1,8 @@
 ﻿using FluentAssertions;
-using Nada.Collections;
+using Nada.Core.Collections;
 using NUnit.Framework;
 
-namespace Nada.Tests.Collections;
+namespace Nada.Core.Tests.Collections;
 
 [TestFixture]
 public class TreeItemExtensionsTests

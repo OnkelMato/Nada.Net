@@ -1,4 +1,4 @@
-﻿namespace Nada.Replacer;
+﻿namespace Nada.Core.Replacer;
 
 /// <summary>
 ///     The Property library is designed to replace parameters in string.

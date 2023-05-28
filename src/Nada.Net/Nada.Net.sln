@@ -3,15 +3,22 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nada", "Nada\Nada.csproj", "{60F1F3FD-2C7B-4DA6-95BE-46A59E2BCBA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nada.Core", "Nada\Nada.Core.csproj", "{60F1F3FD-2C7B-4DA6-95BE-46A59E2BCBA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nada.Tests", "Nada.Tests\Nada.Tests.csproj", "{A7D26BAB-90AD-490E-9343-1EF422C36CA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nada.Core.Tests", "Nada.Tests\Nada.Core.Tests.csproj", "{A7D26BAB-90AD-490E-9343-1EF422C36CA6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{778E6698-4C04-42A7-A6B8-46C98390AB9C}"
 	ProjectSection(SolutionItems) = preProject
-		..\..\.github\workflows\build.yml = ..\..\.github\workflows\build.yml
 		..\..\README.md = ..\..\README.md
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nada.NZazu", "Nada.NZazu\Nada.NZazu.csproj", "{0A9EC4EB-2A67-4413-B83C-CDEBB2959BFA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nada.NZazu.Contracts", "Nada.NZazu.Contracts\Nada.NZazu.Contracts.csproj", "{9F526F7F-8315-4A97-B7F1-38376C063786}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nada.NZazu.Tests", "Nada.NZazu.Tests\Nada.NZazu.Tests.csproj", "{97A66738-FD51-456E-A7EF-BCEDF4FB86EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nada.NZazu.Contracts.Tests", "Nada.NZazu.Contracts.Tests\Nada.NZazu.Contracts.Tests.csproj", "{A731DA2A-64AC-4A75-86D0-1E8946DDEE2C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +34,22 @@ Global
 		{A7D26BAB-90AD-490E-9343-1EF422C36CA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7D26BAB-90AD-490E-9343-1EF422C36CA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7D26BAB-90AD-490E-9343-1EF422C36CA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A9EC4EB-2A67-4413-B83C-CDEBB2959BFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A9EC4EB-2A67-4413-B83C-CDEBB2959BFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A9EC4EB-2A67-4413-B83C-CDEBB2959BFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A9EC4EB-2A67-4413-B83C-CDEBB2959BFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F526F7F-8315-4A97-B7F1-38376C063786}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F526F7F-8315-4A97-B7F1-38376C063786}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F526F7F-8315-4A97-B7F1-38376C063786}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F526F7F-8315-4A97-B7F1-38376C063786}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97A66738-FD51-456E-A7EF-BCEDF4FB86EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97A66738-FD51-456E-A7EF-BCEDF4FB86EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97A66738-FD51-456E-A7EF-BCEDF4FB86EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97A66738-FD51-456E-A7EF-BCEDF4FB86EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A731DA2A-64AC-4A75-86D0-1E8946DDEE2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A731DA2A-64AC-4A75-86D0-1E8946DDEE2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A731DA2A-64AC-4A75-86D0-1E8946DDEE2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A731DA2A-64AC-4A75-86D0-1E8946DDEE2C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

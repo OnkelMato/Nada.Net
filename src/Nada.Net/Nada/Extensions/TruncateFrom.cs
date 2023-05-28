@@ -1,4 +1,4 @@
-﻿namespace Nada.Extensions;
+﻿namespace Nada.Core.Extensions;
 
 /// <summary>
 ///     Truncation location for humanizer

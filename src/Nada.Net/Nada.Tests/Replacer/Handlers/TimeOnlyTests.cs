@@ -1,11 +1,10 @@
-﻿using System.Collections;
-using System.Globalization;
+﻿using System.Globalization;
 using FluentAssertions;
-using Nada.Replacer;
-using Nada.Replacer.Handlers;
+using Nada.Core.Replacer;
+using Nada.Core.Replacer.Handlers;
 using NUnit.Framework;
 
-namespace Nada.Tests.Replacer.Handlers;
+namespace Nada.Core.Tests.Replacer.Handlers;
 
 public class TimeOnlyTests
 {

@@ -1,4 +1,4 @@
-﻿namespace Nada.Extensions;
+﻿namespace Nada.Core.Extensions;
 
 public static class DictionaryExtensions
 {

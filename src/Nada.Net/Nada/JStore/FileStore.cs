@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace Nada.JStore;
+namespace Nada.Core.JStore;
 
 /// <summary>
 /// </summary>
