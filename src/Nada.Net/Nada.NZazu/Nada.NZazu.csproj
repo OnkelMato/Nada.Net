@@ -15,6 +15,12 @@
 		<PackageIcon>packageicon.png</PackageIcon>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
+	<PropertyGroup>
+		<Authors>Thomas Ley</Authors>
+		<Description>Nada NZazu is a package with a UI form generator.</Description>
+		<PackageProjectUrl>https://thomasley.github.io/Nada.Net/</PackageProjectUrl>
+		<PackageTags>library</PackageTags>
+	</PropertyGroup>
 	<ItemGroup>
 		<AppDesigner Include="Properties\" />
 	</ItemGroup>
