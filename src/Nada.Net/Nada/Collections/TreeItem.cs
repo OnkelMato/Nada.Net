@@ -1,4 +1,4 @@
-﻿namespace Nada.Collections;
+﻿namespace Nada.Core.Collections;
 
 public class TreeItem<T>
 {
