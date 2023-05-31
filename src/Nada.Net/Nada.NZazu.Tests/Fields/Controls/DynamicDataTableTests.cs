@@ -7,7 +7,7 @@ namespace Nada.NZazu.Tests.Fields.Controls
     [TestFixture]
 #pragma warning disable 618
     // ReSharper disable once InconsistentNaming
-    internal class DynamicDataTableTests
+    public class DynamicDataTableTests
     {
         [Test]
         [Apartment(ApartmentState.STA)]

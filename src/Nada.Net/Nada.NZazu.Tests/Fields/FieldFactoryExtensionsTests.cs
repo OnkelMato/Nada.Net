@@ -6,7 +6,7 @@ namespace Nada.NZazu.Tests.Fields
 {
     [TestFixture]
     // ReSharper disable once InconsistentNaming
-    internal class FieldFactoryExtensionsTests
+    public class FieldFactoryExtensionsTests
     {
         [Test]
         public void Be_Static()

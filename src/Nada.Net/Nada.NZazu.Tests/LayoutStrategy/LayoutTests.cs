@@ -7,7 +7,7 @@ namespace Nada.NZazu.Tests.LayoutStrategy
 {
     [TestFixture]
     // ReSharper disable InconsistentNaming
-    internal class LayoutTests
+    public class LayoutTests
     {
         // TODO: code is covered, though. Write tests?
     }

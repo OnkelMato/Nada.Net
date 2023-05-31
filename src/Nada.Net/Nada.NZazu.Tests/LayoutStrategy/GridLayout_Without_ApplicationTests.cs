@@ -6,7 +6,7 @@ namespace Nada.NZazu.Tests.LayoutStrategy
 {
     [TestFixture]
     // ReSharper disable InconsistentNaming
-    internal class GridLayout_Without_ApplicationTests
+    public class GridLayout_Without_ApplicationTests
     {
         [Test]
         public void Be_Creatable()

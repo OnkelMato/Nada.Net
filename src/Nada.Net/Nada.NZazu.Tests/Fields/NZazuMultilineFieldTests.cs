@@ -14,7 +14,7 @@ namespace Nada.NZazu.Tests.Fields
     [TestFixture]
     [Apartment(ApartmentState.STA)]
     // ReSharper disable InconsistentNaming
-    internal class NZazuMultilineFieldTests
+    public class NZazuMultilineFieldTests
     {
         [ExcludeFromCodeCoverage]
         private object ServiceLocator(Type type)

@@ -6,7 +6,7 @@ namespace Nada.NZazu.Contracts.Tests.Suggest
 {
     [TestFixture]
     // ReSharper disable once InconsistentNaming
-    internal class ProvideValueSuggestionsTests
+    public class ProvideValueSuggestionsTests
     {
         [Test]
         public void Be_Creatable()

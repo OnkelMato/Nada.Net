@@ -6,7 +6,7 @@ namespace Nada.NZazu.Tests.Fields
 {
     [TestFixture]
     // ReSharper disable InconsistentNaming
-    internal class PropertyExtensionsTests
+    public class PropertyExtensionsTests
     {
         [Test]
         public void Support_child_properties()

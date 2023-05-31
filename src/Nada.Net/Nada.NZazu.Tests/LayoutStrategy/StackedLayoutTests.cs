@@ -15,7 +15,7 @@ namespace Nada.NZazu.Tests.LayoutStrategy
     [TestFixture]
     [Apartment(ApartmentState.STA)]
     // ReSharper disable InconsistentNaming
-    internal class StackedLayoutTests
+    public class StackedLayoutTests
     {
         private Application application;
 

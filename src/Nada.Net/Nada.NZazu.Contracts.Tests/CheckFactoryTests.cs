@@ -9,7 +9,7 @@ namespace Nada.NZazu.Contracts.Tests
 {
     [TestFixture]
     // ReSharper disable InconsistentNaming
-    internal class CheckFactoryTests
+    public class CheckFactoryTests
     {
         [Test]
         public void Throw_on_unsupported_types()

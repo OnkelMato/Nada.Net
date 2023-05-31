@@ -7,7 +7,7 @@ namespace Nada.NZazu.Tests.Serializer
 {
     [TestFixture]
     // ReSharper disable once InconsistentNaming
-    internal class NZazuTableDataXmlSerializerTests
+    public class NZazuTableDataXmlSerializerTests
     {
         [Test]
         public void Be_Creatable()

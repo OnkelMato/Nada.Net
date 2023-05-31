@@ -7,7 +7,7 @@ namespace Nada.NZazu.Tests.Fields.Controls
 {
     [TestFixture]
     // ReSharper disable once InconsistentNaming
-    internal class ErrorPanelTests
+    public class ErrorPanelTests
     {
         [Test]
         [Apartment(ApartmentState.STA)]

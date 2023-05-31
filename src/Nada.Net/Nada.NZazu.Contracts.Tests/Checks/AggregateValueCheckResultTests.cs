@@ -5,7 +5,7 @@ using NUnit.Framework;
 namespace Nada.NZazu.Contracts.Tests.Checks
 {
     [TestFixture]
-    internal class AggregateValueCheckResultTests
+    public class AggregateValueCheckResultTests
     {
         [Test]
         public void Be_Creatable()

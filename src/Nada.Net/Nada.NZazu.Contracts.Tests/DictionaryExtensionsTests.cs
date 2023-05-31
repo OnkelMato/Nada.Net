@@ -5,7 +5,7 @@ namespace Nada.NZazu.Contracts.Tests
 {
     [TestFixture]
     // ReSharper disable once InconsistentNaming
-    internal class DictionaryExtensionsTests
+    public class DictionaryExtensionsTests
     {
         [Test]
         public void Add_Or_Replace()

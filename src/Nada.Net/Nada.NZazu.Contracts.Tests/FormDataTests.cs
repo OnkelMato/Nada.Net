@@ -5,7 +5,7 @@ namespace Nada.NZazu.Contracts.Tests
 {
     [TestFixture]
     // ReSharper disable InconsistentNaming
-    internal class FormDataTests
+    public class FormDataTests
     {
         [Test]
         public void Support_implicit_casting_from_and_to_dictionaries()
