@@ -3,14 +3,12 @@
 		<TargetFramework>net7.0-windows</TargetFramework>
 		<OutputType>Library</OutputType>
 		<EnableWindowsTargeting>true</EnableWindowsTargeting>
-		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 		<UseWindowsForms>true</UseWindowsForms>
 		<UseWPF>true</UseWPF>
 		<ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
-		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 		<EnablePackageValidation>true</EnablePackageValidation>
 		<Version>0.0.1.0</Version>
-		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
 		<PackageIcon>packageicon.png</PackageIcon>
 		<PackageReadmeFile>README.md</PackageReadmeFile>

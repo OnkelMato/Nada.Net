@@ -2,7 +2,6 @@
 	<PropertyGroup>
 		<TargetFramework>net7.0</TargetFramework>
 		<OutputType>Library</OutputType>
-		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 		<EnablePackageValidation>true</EnablePackageValidation>
 		<Version>0.0.1.0</Version>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
