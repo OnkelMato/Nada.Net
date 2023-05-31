@@ -1,42 +1,43 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>net7.0-windows</TargetFramework>
-    <OutputType>Library</OutputType>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <UseWindowsForms>true</UseWindowsForms>
-    <UseWPF>true</UseWPF>
-    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
-	  <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-	  <EnablePackageValidation>true</EnablePackageValidation>
-	  <Version>0.0.1.0</Version>
-	  <GenerateDocumentationFile>True</GenerateDocumentationFile>
-	  <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-	  <PackageIcon>packageicon.png</PackageIcon>
-	  <PackageReadmeFile>README.md</PackageReadmeFile>
-  </PropertyGroup>
-  <ItemGroup>
-    <AppDesigner Include="Properties\" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
-    <PackageReference Include="FontAwesome.Sharp" Version="6.3.0" />
-    <PackageReference Include="Microsoft.Windows.Compatibility" Version="7.0.1" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\error.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0" />
-    <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
-    <PackageReference Include="System.ValueTuple" Version="4.5.0" />
-    <PackageReference Include="UtilPack.NuGet.MSBuild" Version="2.9.1" />
-  </ItemGroup>
-  <ItemGroup>
-    <Page Remove="Resources.xaml" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Nada.NZazu.Contracts\Nada.NZazu.Contracts.csproj" />
-    <None Include="packageicon.png" Pack="true" PackagePath="" />
-    <None Include="README.md" Pack="true" PackagePath="" />
-  </ItemGroup>
+	<PropertyGroup>
+		<TargetFramework>net7.0-windows</TargetFramework>
+		<OutputType>Library</OutputType>
+		<EnableWindowsTargeting>true</EnableWindowsTargeting>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<UseWindowsForms>true</UseWindowsForms>
+		<UseWPF>true</UseWPF>
+		<ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<EnablePackageValidation>true</EnablePackageValidation>
+		<Version>0.0.1.0</Version>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+		<PackageIcon>packageicon.png</PackageIcon>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+	</PropertyGroup>
+	<ItemGroup>
+		<AppDesigner Include="Properties\" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+		<PackageReference Include="FontAwesome.Sharp" Version="6.3.0" />
+		<PackageReference Include="Microsoft.Windows.Compatibility" Version="7.0.1" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Images\error.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0" />
+		<PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
+		<PackageReference Include="System.ValueTuple" Version="4.5.0" />
+		<PackageReference Include="UtilPack.NuGet.MSBuild" Version="2.9.1" />
+	</ItemGroup>
+	<ItemGroup>
+		<Page Remove="Resources.xaml" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Nada.NZazu.Contracts\Nada.NZazu.Contracts.csproj" />
+		<None Include="packageicon.png" Pack="true" PackagePath="" />
+		<None Include="README.md" Pack="true" PackagePath="" />
+	</ItemGroup>
 </Project>
