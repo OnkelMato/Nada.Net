@@ -18,6 +18,8 @@
 		<Description>Nada NZazu is a package with a UI form generator.</Description>
 		<PackageProjectUrl>https://thomasley.github.io/Nada.Net/</PackageProjectUrl>
 		<PackageTags>library</PackageTags>
+		<IncludeSymbols>True</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 	</PropertyGroup>
 	<ItemGroup>
 		<AppDesigner Include="Properties\" />
