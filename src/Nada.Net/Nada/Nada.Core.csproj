@@ -18,16 +18,7 @@
     <PackageProjectUrl>https://thomasley.github.io/Nada.Net/</PackageProjectUrl>
     <PackageTags>library</PackageTags>
     <IncludeSymbols>False</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
-
- <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-   <DebugType>portable</DebugType>
- </PropertyGroup>
-
- <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-   <DebugType>portable</DebugType>
- </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="DotNet.ReproducibleBuilds" Version="1.1.1">
