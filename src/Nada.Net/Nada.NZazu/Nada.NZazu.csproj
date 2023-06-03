@@ -9,17 +9,19 @@
 		<EnablePackageValidation>true</EnablePackageValidation>
 		<Version>0.0.1.0</Version>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
-		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-		<PackageIcon>packageicon.png</PackageIcon>
-		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
+
 	<PropertyGroup>
 		<Authors>Thomas Ley</Authors>
 		<Description>Nada NZazu is a package with a UI form generator.</Description>
 		<PackageProjectUrl>https://thomasley.github.io/Nada.Net/</PackageProjectUrl>
 		<PackageTags>library</PackageTags>
 		<IncludeSymbols>False</IncludeSymbols>
+		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+		<PackageIcon>packageicon.png</PackageIcon>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
+
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
 	  <DebugType>embedded</DebugType>
 	</PropertyGroup>
@@ -30,6 +32,10 @@
 		<AppDesigner Include="Properties\" />
 	</ItemGroup>
 	<ItemGroup>
+		<PackageReference Include="DotNet.ReproducibleBuilds" Version="1.1.1">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
 		<PackageReference Include="FontAwesome.Sharp" Version="6.3.0" />
 		<PackageReference Include="Microsoft.Windows.Compatibility" Version="7.0.1" />

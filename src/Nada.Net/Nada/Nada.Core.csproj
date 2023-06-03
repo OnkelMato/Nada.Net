@@ -7,17 +7,18 @@
     <EnablePackageValidation>true</EnablePackageValidation>
     <Version>0.0.1.0</Version>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
-    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-    <PackageIcon>packageicon.png</PackageIcon>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
  <PropertyGroup>
     <Authors>Thomas Ley</Authors>
     <Description>Nada is a package with a lot of useful extensions and methods.</Description>
     <PackageProjectUrl>https://thomasley.github.io/Nada.Net/</PackageProjectUrl>
+
     <PackageTags>library</PackageTags>
     <IncludeSymbols>False</IncludeSymbols>
+	 <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+	 <PackageIcon>packageicon.png</PackageIcon>
+	 <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
