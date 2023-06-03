@@ -15,7 +15,7 @@ using Nada.NZazu.Fields.Controls;
 
 namespace Nada.NZazu
 {
-    public class NZazuView : ScrollViewer, INZazuWpfView
+    public class NZazuView : ScrollViewer, INZazuWpfView, IDisposable
     {
         private readonly List<IFormCheck> _checks = new List<IFormCheck>();
 
@@ -224,7 +224,8 @@ namespace Nada.NZazu
             _fields.Add(field.Key, field);
         }
 
-        private void Dispose()
+        /// <inheritdoc />
+        public void Dispose()
         {
             foreach (var field in _fields.Values)
             {
