@@ -18,7 +18,7 @@ namespace Nada.NZazu.Tests.Fields
     [TestFixture]
     [Apartment(ApartmentState.STA)]
     // ReSharper disable InconsistentNaming
-    internal class NZazuFieldFactoryTests
+    public class NZazuFieldFactoryTests
     {
         [Test]
         public void Be_Creatable()

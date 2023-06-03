@@ -9,7 +9,7 @@ namespace Nada.NZazu.Contracts.Tests.Checks
 {
     [TestFixture]
     // ReSharper disable InconsistentNaming
-    internal class RangeCheckTests
+    public class RangeCheckTests
     {
         [Test]
         public void Be_Creatable()

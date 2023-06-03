@@ -6,7 +6,7 @@ namespace Nada.NZazu.Contracts.Tests.Adapter
 {
     [TestFixture]
     // ReSharper disable once InconsistentNaming
-    internal class NZazuCoordinateTests
+    public class NZazuCoordinateTests
     {
         [Test]
         public void Be_Creatable()

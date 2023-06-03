@@ -10,7 +10,7 @@ namespace Nada.NZazu.Tests.Extensions
     [TestFixture]
     [Apartment(ApartmentState.STA)]
     // ReSharper disable InconsistentNaming
-    internal class FieldExtensionsTests
+    public class FieldExtensionsTests
     {
         [Test]
         public void Return_False_If_Validate_Has_Exception()

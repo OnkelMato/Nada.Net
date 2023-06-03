@@ -12,7 +12,7 @@ namespace Nada.NZazu.Tests.FieldBehavior
 {
     [TestFixture]
     // ReSharper disable once InconsistentNaming
-    internal class SetBorderBehaviorTests
+    public class SetBorderBehaviorTests
     {
         [Test]
         [STAThread]

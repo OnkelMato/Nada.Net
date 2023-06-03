@@ -13,7 +13,7 @@ namespace Nada.NZazu.Tests.Fields
     [TestFixture]
     [Apartment(ApartmentState.STA)]
     // ReSharper disable InconsistentNaming
-    internal class NZazuGroupFieldTests
+    public class NZazuGroupFieldTests
     {
         [ExcludeFromCodeCoverage]
         private object ServiceLocator(Type type)

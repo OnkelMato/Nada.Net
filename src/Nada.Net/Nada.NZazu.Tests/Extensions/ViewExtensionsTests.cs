@@ -8,7 +8,7 @@ namespace Nada.NZazu.Tests.Extensions
 {
     [TestFixture]
     // ReSharper disable InconsistentNaming
-    internal class ViewExtensionsTests
+    public class ViewExtensionsTests
     {
         [Test]
         public void Return_False_If_Validate_Has_Exception()

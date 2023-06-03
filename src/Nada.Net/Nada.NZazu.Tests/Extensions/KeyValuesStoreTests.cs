@@ -6,7 +6,7 @@ namespace Nada.NZazu.Tests.Extensions
 {
     [TestFixture]
     // ReSharper disable once InconsistentNaming
-    internal class KeyValuesStoreTests
+    public class KeyValuesStoreTests
     {
         [Test]
         public void Be_Creatable_And_Empty()

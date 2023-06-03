@@ -8,7 +8,7 @@ namespace Nada.NZazu.Tests.FieldBehavior
 {
     [TestFixture]
     // ReSharper disable once InconsistentNaming
-    internal class OpenUrlOnStringEnterBehaviorTests
+    public class OpenUrlOnStringEnterBehaviorTests
     {
         [Test]
         [TestCase("asdfklj asöfkdljsa fdöakfjl saöljad fösadfa", 6, null)]

@@ -9,7 +9,7 @@ namespace Nada.NZazu.Tests.Fields.Controls
 {
     [TestFixture]
     // ReSharper disable once InconsistentNaming
-    internal class GeoLocationBoxTests
+    public class GeoLocationBoxTests
     {
         [Test]
         [Apartment(ApartmentState.STA)]

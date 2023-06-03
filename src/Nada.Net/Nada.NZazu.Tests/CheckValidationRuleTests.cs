@@ -8,7 +8,7 @@ namespace Nada.NZazu.Tests
 {
     [TestFixture]
     // ReSharper disable InconsistentNaming
-    internal class CheckValidationRuleTests
+    public class CheckValidationRuleTests
     {
         [Test]
         public void Delegate_validation_to_check()

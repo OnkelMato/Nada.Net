@@ -7,7 +7,7 @@ namespace Nada.NZazu.Contracts.Tests.FormChecks
 {
     [TestFixture]
     // ReSharper disable InconsistentNaming
-    internal class GreaterThanFormCheckTests
+    public class GreaterThanFormCheckTests
     {
         [Test]
         public void Be_Creatable()

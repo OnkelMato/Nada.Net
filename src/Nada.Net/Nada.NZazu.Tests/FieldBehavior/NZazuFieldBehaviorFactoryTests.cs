@@ -8,7 +8,7 @@ namespace Nada.NZazu.Tests.FieldBehavior
 {
     [TestFixture]
     // ReSharper disable InconsistentNaming
-    internal class NZazuFieldBehaviorFactoryTests
+    public class NZazuFieldBehaviorFactoryTests
     {
         [Test]
         public void Be_Creatable()

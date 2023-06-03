@@ -8,7 +8,7 @@ namespace Nada.NZazu.Tests.Extensions
     [TestFixture]
     [Apartment(ApartmentState.STA)]
     // ReSharper disable InconsistentNaming
-    internal class FocusExtensionsTests
+    public class FocusExtensionsTests
     {
         [Test]
         [STAThread]

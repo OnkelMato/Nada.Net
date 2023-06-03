@@ -17,6 +17,7 @@
     <Description>Nada is a package with a lot of useful extensions and methods.</Description>
     <PackageProjectUrl>https://thomasley.github.io/Nada.Net/</PackageProjectUrl>
     <PackageTags>library</PackageTags>
+    <IncludeSymbols>False</IncludeSymbols>
   </PropertyGroup>
 
   <ItemGroup>

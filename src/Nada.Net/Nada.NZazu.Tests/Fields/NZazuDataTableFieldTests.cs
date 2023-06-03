@@ -15,7 +15,7 @@ namespace Nada.NZazu.Tests.Fields
 {
     [TestFixture]
     // ReSharper disable InconsistentNaming
-    internal class NZazuDataTableFieldTests
+    public class NZazuDataTableFieldTests
     {
         private static object ServiceLocator(Type type)
         {

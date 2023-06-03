@@ -6,7 +6,7 @@ namespace Nada.NZazu.Tests
 {
     [TestFixture]
     // ReSharper disable once InconsistentNaming
-    internal class ResolveLayoutTests
+    public class ResolveLayoutTests
     {
         [Test]
         public void Be_Creatable()

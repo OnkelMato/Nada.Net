@@ -10,7 +10,7 @@ namespace Nada.NZazu.Contracts.Tests.Checks
 {
     [TestFixture]
     // ReSharper disable InconsistentNaming
-    internal class DateTimeComparisonCheckTests
+    public class DateTimeComparisonCheckTests
     {
         [Test]
         public void Be_Creatable()

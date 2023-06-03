@@ -14,7 +14,7 @@ namespace Nada.NZazu.Tests
     [TestFixture]
     [Apartment(ApartmentState.STA)]
     // ReSharper disable InconsistentNaming
-    internal class NZazuViewTests
+    public class NZazuViewTests
     {
         [Test]
         [STAThread]

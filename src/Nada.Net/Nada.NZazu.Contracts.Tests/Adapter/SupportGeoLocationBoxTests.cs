@@ -6,7 +6,7 @@ namespace Nada.NZazu.Contracts.Tests.Adapter
 {
     [TestFixture]
     // ReSharper disable once InconsistentNaming
-    internal class SupportGeoLocationBoxTests
+    public class SupportGeoLocationBoxTests
     {
         [Test]
         public void Be_Creatble()

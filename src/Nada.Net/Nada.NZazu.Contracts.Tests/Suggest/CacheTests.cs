@@ -6,7 +6,7 @@ namespace Nada.NZazu.Contracts.Tests.Suggest
 {
     [TestFixture]
     // ReSharper disable InconsistentNaming
-    internal class CacheTests
+    public class CacheTests
     {
         [Test]
         public void Skip_lru_items()
