@@ -36,7 +36,7 @@ namespace Nada.NZazu.Tests.Fields
         [TestCase("multiline", typeof(TextBox))]
         [TestCase("bool", typeof(CheckBox))]
         [TestCase("int", typeof(TextBox))]
-        // todo [TestCase("dateonly", typeof(DateOnlyPicker))]
+        [TestCase("dateonly", typeof(DateTimePicker))]
         // todo [TestCase("timeonly", typeof(TimeOnlyPicker))]
         [TestCase("datetime", typeof(DateTimePicker))]
         [TestCase("double", typeof(TextBox))]

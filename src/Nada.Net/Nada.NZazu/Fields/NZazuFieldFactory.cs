@@ -52,9 +52,9 @@ namespace Nada.NZazu.Fields
             FieldTypes.Add("keyedoption", typeof(NZazuKeyedOptionsField));
 
             // todo implement me
-            FieldTypes.Add("dateonly", typeof(NZazuDateField));
-            FieldTypes.Add("timeonly", typeof(NZazuDateField));
-            FieldTypes.Add("datetime", typeof(NZazuDateField));
+            FieldTypes.Add("dateonly", typeof(NZazuDateOnlyField));
+            FieldTypes.Add("timeonly", typeof(NZazuDateOnlyField));
+            FieldTypes.Add("datetime", typeof(NZazuDateOnlyField));
 
             FieldTypes.Add("datatable", typeof(NZazuDataTableField));
             FieldTypes.Add("imageViewer", typeof(NZazuImageViewerField));

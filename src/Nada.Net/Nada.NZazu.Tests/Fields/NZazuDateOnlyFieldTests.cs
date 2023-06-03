@@ -3,6 +3,7 @@ using System.Globalization;
 using System.Windows.Controls;
 using System.Windows.Data;
 using FluentAssertions;
+using FluentAssertions.Equivalency;
 using Nada.NZazu.Contracts;
 using Nada.NZazu.Extensions;
 using Nada.NZazu.Fields;
@@ -13,7 +14,7 @@ namespace Nada.NZazu.Tests.Fields
     [TestFixture]
     [Apartment(ApartmentState.STA)]
     // ReSharper disable InconsistentNaming
-    internal class NZazuDateFieldTests
+    internal class NZazuDateOnlyFieldTests
     {
         [ExcludeFromCodeCoverage]
         private object ServiceLocator(Type type)
@@ -26,7 +27,7 @@ namespace Nada.NZazu.Tests.Fields
         [Test]
         public void Be_Creatable()
         {
-            var sut = new NZazuDateField(new FieldDefinition {Key = "key"}, ServiceLocator);
+            var sut = new NZazuDateOnlyField(new FieldDefinition {Key = "key"}, ServiceLocator);
 
             sut.Should().NotBeNull();
             sut.Should().BeAssignableTo<INZazuWpfField>();
@@ -36,7 +37,7 @@ namespace Nada.NZazu.Tests.Fields
         [STAThread]
         public void Create_Control_With_ToolTip_Matching_Description()
         {
-            var sut = new NZazuDateField(new FieldDefinition
+            var sut = new NZazuDateOnlyField(new FieldDefinition
             {
                 Key = "key",
                 Hint = "superhero",
@@ -55,7 +56,7 @@ namespace Nada.NZazu.Tests.Fields
         public void Format_UIText_From_Value()
         {
             // ReSharper disable once UseObjectOrCollectionInitializer
-            var sut = new NZazuDateField(new FieldDefinition {Key = "key"}, ServiceLocator);
+            var sut = new NZazuDateOnlyField(new FieldDefinition {Key = "key"}, ServiceLocator);
             const string dateFormat = "yyyy_MM_dd";
             sut.Definition.Settings.Add("Format", dateFormat);
             var datePicker = (DatePicker) sut.ValueControl;
@@ -63,8 +64,8 @@ namespace Nada.NZazu.Tests.Fields
             sut.Value.Should().NotHaveValue();
             datePicker.Text.Should().BeEmpty();
 
-            var now = DateTime.Now.Date;
-            sut.Value = now;
+            var now = DateTime.Now;
+            sut.Value = new DateOnly( now.Year, now.Month, now.Day);
             var expected = now.ToString(dateFormat);
             sut.GetValue().Should().Be(expected);
 
@@ -82,14 +83,14 @@ namespace Nada.NZazu.Tests.Fields
         [STAThread]
         public void Format_SelectedDate_From_Value()
         {
-            var sut = new NZazuDateField(new FieldDefinition {Key = "key"}, ServiceLocator);
+            var sut = new NZazuDateOnlyField(new FieldDefinition {Key = "key"}, ServiceLocator);
             var datePicker = (DatePicker) sut.ValueControl;
 
             sut.Value.Should().NotHaveValue();
             datePicker.Text.Should().BeEmpty();
 
             var now = DateTime.Now.Date;
-            sut.Value = now;
+            sut.Value = new DateOnly(now.Year, now.Month, now.Day);
             datePicker.SelectedDate.Should().Be(now);
 
             sut.Value = null;
@@ -100,14 +101,15 @@ namespace Nada.NZazu.Tests.Fields
         [STAThread]
         public void Format_Value_From_TextBox()
         {
-            var sut = new NZazuDateField(new FieldDefinition {Key = "key"}, ServiceLocator);
+            var sut = new NZazuDateOnlyField(new FieldDefinition {Key = "key"}, ServiceLocator);
             var datePicker = (DatePicker) sut.ValueControl;
 
             sut.Value.Should().NotHaveValue();
             datePicker.Text.Should().BeEmpty();
 
-            var now = DateTime.Now.Date;
-            datePicker.SelectedDate = now;
+            var nowDt = DateTime.Now.Date;
+            var now = new DateOnly(nowDt.Year, nowDt.Month, nowDt.Day);
+            datePicker.SelectedDate = nowDt;
             sut.Value.Should().Be(now);
 
             datePicker.SelectedDate = null;
@@ -119,7 +121,7 @@ namespace Nada.NZazu.Tests.Fields
         [STAThread]
         public void Format_TextBox_From_StringValue()
         {
-            var sut = new NZazuDateField(new FieldDefinition {Key = "key"}, ServiceLocator);
+            var sut = new NZazuDateOnlyField(new FieldDefinition {Key = "key"}, ServiceLocator);
             var datePicker = (DatePicker) sut.ValueControl;
 
             sut.GetValue().Should().BeNullOrEmpty();
@@ -137,7 +139,7 @@ namespace Nada.NZazu.Tests.Fields
         [STAThread]
         public void Format_StringValue_From_TextBox()
         {
-            var sut = new NZazuDateField(new FieldDefinition {Key = "key"}, ServiceLocator);
+            var sut = new NZazuDateOnlyField(new FieldDefinition {Key = "key"}, ServiceLocator);
             var datePicker = (DatePicker) sut.ValueControl;
 
             var now = DateTime.Now.Date;
@@ -156,17 +158,18 @@ namespace Nada.NZazu.Tests.Fields
         [Test]
         public void Consider_DateFormat_in_StringValue()
         {
-            var sut = new NZazuDateField(new FieldDefinition {Key = "key"}, ServiceLocator);
+            var sut = new NZazuDateOnlyField(new FieldDefinition {Key = "key"}, ServiceLocator);
 
             // DateFormat unspecified
             var date = DateTime.UtcNow;
+            
             var dateStr = date.ToString(CultureInfo.InvariantCulture);
             sut.SetValue(dateStr);
-            sut.Value.Should().BeCloseTo(date,TimeSpan.FromMilliseconds(1000), "parsing truncates millis");
+            sut.Value.Should().Be(new DateOnly(date.Year, date.Month, date.Day));
 
             date += TimeSpan.FromSeconds(1);
             dateStr = date.ToString(CultureInfo.InvariantCulture);
-            sut.Value = date;
+            sut.Value = new DateOnly(date.Year, date.Month, date.Day);
             sut.GetValue().Should().Be(dateStr);
 
             // now specify DateFormat
@@ -178,14 +181,14 @@ namespace Nada.NZazu.Tests.Fields
 
             date -= TimeSpan.FromDays(60);
             dateStr = date.ToString(dateFormat, CultureInfo.InvariantCulture);
-            sut.Value = date;
+            sut.Value = new DateOnly(date.Year, date.Month, date.Day);
             sut.GetValue().Should().Be(dateStr);
 
             date += TimeSpan.FromDays(2);
             date = date.Date; // truncate time (we only check date --> format)
             dateStr = date.ToString(dateFormat, CultureInfo.InvariantCulture);
             sut.SetValue(dateStr);
-            sut.Value.Should().Be(date);
+            sut.Value.Should().Be(new DateOnly(date.Year, date.Month, date.Day));
         }
     }
 }
