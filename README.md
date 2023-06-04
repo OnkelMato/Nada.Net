@@ -10,7 +10,9 @@ Nada.net is "not another dotnet API" with the purpose of a function library with
 
 ### Nuget Package Statistics
 
-[![NuGet Badge](https://buildstats.info/nuget/Nada)](https://www.nuget.org/packages/Nada/)
+[![NuGet Badge](https://buildstats.info/nuget/Nada.Core)](https://www.nuget.org/packages/Nada.Core/)
+[![NuGet Badge](https://buildstats.info/nuget/Nada.NZazu)](https://www.nuget.org/packages/Nada.NZazu/)
+[![NuGet Badge](https://buildstats.info/nuget/Nada.NZazu.Contracts)](https://www.nuget.org/packages/Nada.NZazu.Contracts/)
 
 ## Examples
 
