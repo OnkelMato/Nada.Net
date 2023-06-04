@@ -78,7 +78,7 @@ public class ProvideFileSuggestionsTests
         const string dataConnection = "file://cities.txt";
         var mock = Substitute.For<IFileSystem>();
         mock.FileExists("cities.txt").Returns(false);
-        mock.ReadAllLines("cities.txt").Returns(Enumerable.Empty<string>());
+        mock.ReadAllLines("cities.txt").Returns(Array.Empty<string>());
 
         var prefix = "thomas";
         var expected = new string[] { };
