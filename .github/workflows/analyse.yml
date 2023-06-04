@@ -49,5 +49,5 @@ jobs:
         run: |
           ./.sonar/scanner/dotnet-sonarscanner begin /k:"ThomasLey_Nada.Net" /o:"thomasley" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vstest.reportsPaths="**/*.trx" /d:sonar.cs.opencover.reportsPaths="**/coverage.opencover.xml"
           dotnet build .\src\Nada.Net\Nada.Net.sln
-          coverlet .\src\Nada.Net\Nada.Net.sln --target "dotnet" --targetargs "test .\src\Nada.Net\Nada.Net.sln --logger trx /p:IncludeTestAssembly=true /p:CollectCoverage=true /p:CoverletOutputFormat=opencover"
+          coverlet .\src\Nada.Net\Nada.Net.sln --target "dotnet" --targetargs "test .\src\Nada.Net\Nada.Net.sln --logger trx /p:IncludeTestAssembly=false /p:CollectCoverage=true /p:CoverletOutputFormat=opencover"
           ./.sonar/scanner/dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
