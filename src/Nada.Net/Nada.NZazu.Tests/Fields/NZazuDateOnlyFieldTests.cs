@@ -174,7 +174,7 @@ internal class NZazuDateOnlyFieldTests
 
         // now specify DateFormat
         const string dateFormat = "yyyy-MMM-dd";
-        sut.DateFormat = dateFormat;
+        sut.DateUIFormat = dateFormat;
 
         dateStr = date.ToString(dateFormat, CultureInfo.InvariantCulture);
         sut.GetValue().Should().Be(dateStr);

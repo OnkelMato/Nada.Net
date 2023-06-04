@@ -26,8 +26,8 @@ public partial class ErrorPanel : UserControl
 
     private static void ErrorsChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
-        if (!(d is ErrorPanel panel)) return;
-        if (!(e.NewValue is IEnumerable<string> errorList)) return;
+        if (d is not ErrorPanel panel) return;
+        if (e.NewValue is not IEnumerable<string> errorList) return;
 
         panel.ErrorList.Content = string.Join("\r\n", errorList);
     }

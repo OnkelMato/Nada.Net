@@ -31,7 +31,7 @@ public abstract class Layout : INZazuWpfLayoutStrategy
         INZazuWpfField field)
     {
         var contentControl = control as ContentControl;
-        if (!(field is INZazuWpfFieldContainer groupField) || contentControl == null) return;
+        if (field is not INZazuWpfFieldContainer groupField || contentControl == null) return;
         var layout = SafeResolve(resolveLayout, groupField.Layout);
         layout.DoLayout(contentControl, groupField.Fields, resolveLayout);
     }

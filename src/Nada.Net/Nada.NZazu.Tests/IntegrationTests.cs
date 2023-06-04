@@ -21,11 +21,13 @@ public class IntegrationTests
         var view = new NZazuView();
         view.FormDefinition = new FormDefinition { Fields = def };
 
-        var window = new Window();
-        window.Content = view;
+        var window = new Window
+        {
+            Content = view
+        };
 
         window.ShowDialog();
 
-        var res = view.FormData.Values;
+        _ = view.FormData.Values;
     }
 }

@@ -14,14 +14,26 @@ public class NZazuDateOnlyField : NZazuField<DateOnly?>
     {
     }
 
-    public string DateFormat { get; protected internal set; }
+    /// <summary>
+    /// Format to display the date in the UI
+    /// </summary>
+    public string DateUIFormat { get; protected internal set; }
+
+    /// <summary>
+    /// Format to serialize and deserialize the date
+    /// </summary>
+    public string DateInternalFormat { get; protected internal set; }
 
     public override DependencyProperty ContentProperty => DateOnlyPicker.ValueProperty;
 
     protected override Control CreateValueControl()
     {
-        DateFormat = ""; // Definition.Settings.Get("Format", "o");
-        return new DateOnlyPicker { ToolTip = Definition.Description };
+        DateUIFormat = Definition.Settings.Get("UiFormat", CultureInfo.CurrentUICulture.DateTimeFormat.ShortDatePattern);
+        DateInternalFormat = Definition.Settings.Get("InternalFormat", "o");
+        return new DateOnlyPicker
+        {
+            ToolTip = Definition.Description,
+        };
     }
 
     public override void SetValue(string value)
@@ -32,9 +44,9 @@ public class NZazuDateOnlyField : NZazuField<DateOnly?>
         if (!string.IsNullOrWhiteSpace(value))
         {
             const DateTimeStyles dateTimeStyles = DateTimeStyles.AssumeLocal;
-            parsed = string.IsNullOrWhiteSpace(DateFormat)
+            parsed = string.IsNullOrWhiteSpace(DateInternalFormat)
                 ? DateOnly.TryParse(value, FormatProvider, dateTimeStyles, out result)
-                : DateOnly.TryParseExact(value, DateFormat, FormatProvider, dateTimeStyles, out result);
+                : DateOnly.TryParseExact(value, DateInternalFormat, FormatProvider, dateTimeStyles, out result);
         }
 
         if (parsed)
@@ -48,8 +60,8 @@ public class NZazuDateOnlyField : NZazuField<DateOnly?>
         if (!Value.HasValue) return string.Empty;
 
         var dateOnly = Value.Value;
-        if (string.IsNullOrWhiteSpace(DateFormat))
+        if (string.IsNullOrWhiteSpace(DateInternalFormat))
             return dateOnly.ToString(FormatProvider);
-        return dateOnly.ToString(DateFormat, FormatProvider);
+        return dateOnly.ToDateTime(new TimeOnly(0,0)).ToString(DateInternalFormat, FormatProvider);
     }
 }

@@ -44,7 +44,7 @@ public partial class DateOnlyPicker : UserControl
 
     private static void ValueChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
-        if (!(d is DateOnlyPicker control)) return;
+        if (d is not DateOnlyPicker control) return;
         var val = e.NewValue as DateOnly?;
 
         UpdateControl(control, val);
@@ -65,7 +65,7 @@ public partial class DateOnlyPicker : UserControl
 
     private static void IsReadOnlyChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
-        if (!(d is DateOnlyPicker box)) return;
+        if (d is not DateOnlyPicker box) return;
         box.DatePicker.IsEnabled = !(bool)e.NewValue;
     }
 

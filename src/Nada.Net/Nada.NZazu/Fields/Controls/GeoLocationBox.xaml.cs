@@ -61,7 +61,7 @@ public partial class GeoLocationBox
 
     private static void GeoLocationSupportChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
-        if (!(d is GeoLocationBox glb)) return;
+        if (d is not GeoLocationBox glb) return;
         var support = e.NewValue as ISupportGeoLocationBox;
 
         UpdateControl(glb, glb.Value, support);
@@ -83,7 +83,7 @@ public partial class GeoLocationBox
 
     private static void Coordinate(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
-        if (!(d is GeoLocationBox glb)) return;
+        if (d is not GeoLocationBox glb) return;
         var val = e.NewValue as NZazuCoordinate;
 
         UpdateControl(glb, val, glb.GeoLocationSupport);
@@ -104,7 +104,7 @@ public partial class GeoLocationBox
 
     private static void IsReadOnlyChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
-        if (!(d is GeoLocationBox box)) return;
+        if (d is not GeoLocationBox box) return;
         box.LocationBox.IsReadOnly = (bool)e.NewValue;
     }
 
