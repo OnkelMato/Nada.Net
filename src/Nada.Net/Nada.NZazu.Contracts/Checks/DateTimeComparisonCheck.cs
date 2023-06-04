@@ -103,21 +103,21 @@ public class DateTimeComparisonCheck : IValueCheck
             out var valueToCompareWithDateTime);
         return new DataToCompare(
             canParseValue ? valueDateTime : null,
-            canParseValueToCompare ? valueToCompareWithDateTime : null);
+            canParseValueToCompare ? valueToCompareWithDateTime : null!);
     }
 
     private Compare GetCompareOperation()
     {
-        switch (Settings.CompareOperator)
+        return Settings.CompareOperator switch
         {
-            case "<=": return (value, compare) => value <= compare;
-            case "<": return (value, compare) => value < compare;
-            case ">=": return (value, compare) => value >= compare;
-            case ">": return (value, compare) => value > compare;
-            case "=": return (value, compare) => value == compare;
-            case "==": return (value, compare) => value == compare;
-            default: throw new NotSupportedException("Operator not specified!");
-        }
+            "<=" => (value, compare) => value <= compare,
+            "<" => (value, compare) => value < compare,
+            ">=" => (value, compare) => value >= compare,
+            ">" => (value, compare) => value > compare,
+            "=" => (value, compare) => value == compare,
+            "==" => (value, compare) => value == compare,
+            _ => throw new NotSupportedException("Operator not specified!")
+        };
     }
 
     internal class DateTimeComparisonCheckSettings

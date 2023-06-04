@@ -32,7 +32,7 @@ public class EmptyNZazuFieldBehaviorTests
         var field = Substitute.For<INZazuWpfField>();
         var sut = new EmptyNZazuFieldBehavior();
 
-        sut.AttachTo(field, null);
+        sut.AttachTo(field, null!);
         sut.Detach();
 
         field.ReceivedCalls().Should().BeEmpty();

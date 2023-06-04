@@ -44,7 +44,7 @@ public class RequiredCheckTests
         var ctx = new ContextFor<RequiredCheck>();
         var sut = ctx.BuildSut();
 
-        sut.ShouldFailWith<ArgumentException>(null, null);
+        sut.ShouldFailWith<ArgumentException>(null, null!);
         sut.ShouldFailWith<ArgumentException>(string.Empty, string.Empty);
         sut.ShouldFailWith<ArgumentException>("\t\r\n", "\t\r\n");
         sut.ShouldFailWith<ArgumentException>(" ", " ");

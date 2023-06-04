@@ -17,7 +17,7 @@ public class KeyValuesStoreTests
         sut.GetValues("foo").Should().BeEmpty();
         sut.GetValues("").Should().BeEmpty();
 
-        var tryGetNull = () => { sut.GetValues(null); };
+        var tryGetNull = () => { sut.GetValues(null!); };
 
         tryGetNull.Should().Throw<ArgumentNullException>();
     }

@@ -142,7 +142,7 @@ public sealed class ContextFor<T>
     {
         if (!substituteOptionalParameter && info.DefaultValue == null) return null;
 
-        if (info.ParameterType.IsInterface) return Substitute.For(new[] { info.ParameterType }, null);
+        if (info.ParameterType.IsInterface) return Substitute.For(new[] { info.ParameterType }, null!);
 
         return CreateInstanceWithSubstitutes(info.ParameterType, substituteOptionalParameter);
     }

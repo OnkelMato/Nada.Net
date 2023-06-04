@@ -13,5 +13,5 @@ public interface INZazuWpfLayoutStrategy
     /// <param name="fields">The fields that are being laid out</param>
     /// <param name="resolveLayout">A callback to determine the layout to use</param>
     void DoLayout(ContentControl contentControl, IEnumerable<INZazuWpfField> fields,
-        IResolveLayout resolveLayout = null);
+        IResolveLayout resolveLayout = null!);
 }

@@ -459,11 +459,11 @@ public sealed class Cache<TKey, TValue> : ICache<TKey, TValue> where TKey : IEqu
     {
         if (Count <= 0) return;
 
-        Debug.Assert(_tail != null);
+        Debug.Assert(_tail != null!);
         _hashMap.Remove(_tail.Key);
 
         OnRemoveNode(_tail);
-        Debug.Assert(_tail.Previous != null);
+        Debug.Assert(_tail.Previous != null!);
 
         _tail = _tail.Previous;
         _tail.Next = null;
@@ -498,14 +498,14 @@ public sealed class Cache<TKey, TValue> : ICache<TKey, TValue> where TKey : IEqu
         }
         else
         {
-            Debug.Assert(_head != null);
+            Debug.Assert(_head != null!);
             if (!_head.Key.Equals(node.Key)) // requires IEquatable<K>
             {
                 // node is tail, move tail to previous
-                Debug.Assert(_tail != null);
+                Debug.Assert(_tail != null!);
                 if (_tail.Key.Equals(node.Key))
                 {
-                    Debug.Assert(node.Previous != null);
+                    Debug.Assert(node.Previous != null!);
                     _tail = node.Previous;
                     _tail.Next = null;
                 }

@@ -141,17 +141,17 @@ public class NZazuImageViewerField : NZazuField
         // just in case no options are given (and no custom value!)
         if (options.Length == 0)
         {
-            SetValue(null);
+            SetValue(null!);
             return;
         }
 
         if (toggleBack)
             if (allowNullValues != null && allowNullValues.Value && currentValueIsAt == 0)
-                SetValue(null);
+                SetValue(null!);
             else
                 SetValue(options[(Math.Max(currentValueIsAt, 0) + options.Length - 1) % options.Length]);
         else if (allowNullValues != null && allowNullValues.Value && currentValueIsAt == options.Length - 1)
-            SetValue(null);
+            SetValue(null!);
         else
             SetValue(options[(currentValueIsAt + 1) % options.Length]);
     }

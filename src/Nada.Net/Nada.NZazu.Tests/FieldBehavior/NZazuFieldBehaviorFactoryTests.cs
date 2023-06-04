@@ -45,7 +45,7 @@ public class NZazuFieldBehaviorFactoryTests
             behavior.Should().BeAssignableTo<SimpleInterfaceImplementation>();
 
             // just to get code coverage
-            behavior.AttachTo(null, null);
+            behavior.AttachTo(null, null!);
             behavior.Detach();
         }
         finally

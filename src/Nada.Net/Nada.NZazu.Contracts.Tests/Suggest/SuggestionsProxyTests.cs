@@ -31,7 +31,7 @@ public class SuggestionsProxyTests
         var ctx = new ContextFor<SuggestionsProxy>();
         var sut = ctx.BuildSut();
 
-        var result = sut.For("xyz", null);
+        var result = sut.For("xyz", null!);
         result.Should().BeNull();
     }
 }

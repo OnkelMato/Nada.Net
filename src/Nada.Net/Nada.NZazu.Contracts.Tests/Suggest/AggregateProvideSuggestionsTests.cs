@@ -49,7 +49,7 @@ public class AggregateProvideSuggestionsTests
             .ReturnsForAnyArgs(new[] { "A", "B" });
         var p2 = Substitute.For<IProvideSuggestions>();
         p2.For(Arg.Any<string>(), Arg.Any<string>())
-            .ReturnsForAnyArgs((string[])null);
+            .ReturnsForAnyArgs((string[])null!);
 
         var sut = new AggregateProvideSuggestions(new[] { p1, p2 });
 

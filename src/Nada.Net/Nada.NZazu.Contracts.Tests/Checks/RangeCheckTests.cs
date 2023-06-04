@@ -103,7 +103,7 @@ public class RangeCheckTests
         var ctx = new ContextFor<RangeCheck>();
         var sut = ctx.BuildSut();
 
-        sut.ShouldPass(null, null);
+        sut.ShouldPass(null, null!);
         sut.ShouldPass(string.Empty, string.Empty);
         sut.ShouldPass("\t\r\n", "\t\r\n");
         sut.ShouldPass(" ", " ");

@@ -291,7 +291,7 @@ public class NZazuDataTableFieldTests
     public void Not_Support_direct_binding_or_validation_Right_Now()
     {
         var sut = new NZazuDataTableField(new FieldDefinition { Key = "table01" }, ServiceLocator);
-        sut.ContentProperty.Should().Be(null);
+        sut.ContentProperty.Should().Be(null!);
     }
 
     [Test]

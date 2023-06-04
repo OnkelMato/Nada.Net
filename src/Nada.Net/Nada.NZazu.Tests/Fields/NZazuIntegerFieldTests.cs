@@ -110,7 +110,7 @@ public class NZazuIntegerFieldTests
         sut.SetValue("-23");
         textBox.Text.Should().Be("-23");
 
-        sut.SetValue(null);
+        sut.SetValue(null!);
         textBox.Text.Should().Be(string.Empty);
     }
 

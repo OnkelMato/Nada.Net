@@ -51,16 +51,17 @@ public class CheckFactory : ICheckFactory
         if (checkDefinition == null) throw new ArgumentNullException(nameof(checkDefinition));
         if (string.IsNullOrWhiteSpace(checkDefinition.Type))
             throw new ArgumentException("form check type not specified");
-        switch (checkDefinition.Type)
+        return checkDefinition.Type switch
         {
-            case "gt": return new GreaterThanFormCheck(checkDefinition.Settings);
-            default: throw new NotSupportedException("The specified check is not supported");
-        }
+            "gt" => new GreaterThanFormCheck(checkDefinition.Settings),
+            _ => throw new NotSupportedException("The specified check is not supported")
+        };
     }
 
     private void RegisterCurrentAssemblyValueChecks()
     {
         _registrations = Assembly.GetExecutingAssembly().GetTypes()
+            // ReSharper disable once UseNameOfInsteadOfTypeOf
             .Where(x => x.GetInterface(typeof(IValueCheck).Name) != null && x != typeof(AggregateCheck))
             .ToDictionary(
                 GetClassDisplayName,

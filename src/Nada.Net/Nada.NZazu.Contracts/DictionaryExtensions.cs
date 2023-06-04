@@ -126,7 +126,7 @@ public static class DictionaryExtensions
         foreach (var item in source)
             someObjectType
                 .GetProperty(item.Key)
-                ?.SetValue(someObject, item.Value, null);
+                ?.SetValue(someObject, item.Value, null!);
 
         return someObject;
     }

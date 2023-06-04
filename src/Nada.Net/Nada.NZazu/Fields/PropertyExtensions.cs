@@ -23,7 +23,7 @@ internal static class PropertyExtensions
                 throw new ArgumentException($"Property '{propName}' does not exist.");
 
             propName = propName.Substring(p + 1);
-            obj = propInfo.GetValue(obj, null);
+            obj = propInfo.GetValue(obj, null!);
             type = obj.GetType();
             p = propName.IndexOf('.');
         }
@@ -49,7 +49,7 @@ internal static class PropertyExtensions
                     throw new ArgumentException($"Property '{propertyName}' does not exist.");
 
                 var childPropName = propertyName.Substring(p + 1);
-                var childItem = propInfo.GetValue(item, null);
+                var childItem = propInfo.GetValue(item, null!);
 
                 // traverse down to child
                 item = childItem;
@@ -68,7 +68,7 @@ internal static class PropertyExtensions
 
                 // if value could be converted from string, set it on the property.
                 if (outVal != null)
-                    propInfo.SetValue(item, outVal, null);
+                    propInfo.SetValue(item, outVal, null!);
             }
 
             break;

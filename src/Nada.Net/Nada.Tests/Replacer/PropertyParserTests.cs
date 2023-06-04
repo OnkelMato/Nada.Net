@@ -17,7 +17,7 @@ public class PropertyParserTests
     [Test]
     public void Pass_Null_Template()
     {
-        var t = new PropertyParser(null);
+        var t = new PropertyParser(null!);
 
         var outcome = t.Parse(null!, new Dictionary<string, string>
         {
@@ -30,9 +30,9 @@ public class PropertyParserTests
     [Test]
     public void Pass_Null_Replacement_Dictionary()
     {
-        var t = new PropertyParser(null);
+        var t = new PropertyParser(null!);
 
-        var outcome = t.Parse("XXX", null);
+        var outcome = t.Parse("XXX", null!);
 
         outcome.Should().Be("XXX");
     }
@@ -40,9 +40,9 @@ public class PropertyParserTests
     [Test]
     public void Pass_Null_Template_And_Null_Replacement_Dictionary()
     {
-        var t = new PropertyParser(null);
+        var t = new PropertyParser(null!);
 
-        var outcome = t.Parse(null!, null);
+        var outcome = t.Parse(null!, null!);
 
         outcome.Should().BeNull();
     }
@@ -58,7 +58,7 @@ public class PropertyParserTests
         // Sample template
         var template = "The task XYZ has been completed";
 
-        var t = new PropertyParser(null);
+        var t = new PropertyParser(null!);
 
         var outcome = t.Parse(template, dict);
 
@@ -73,7 +73,7 @@ public class PropertyParserTests
         // Sample template
         var template = "The task {string|test} {string|test2} has been completed";
 
-        var t = new PropertyParser(null);
+        var t = new PropertyParser(null!);
 
         var outcome = t.Parse(template, dict);
 
@@ -330,7 +330,7 @@ public class PropertyParserTests
         {
             { "key", "value" }
         };
-        var t = new PropertyParser(null);
+        var t = new PropertyParser(null!);
 
         var template = "{spaceDataTypeRunning|tokenName}";
         var outcome = t.Parse(template, dict);
@@ -342,7 +342,7 @@ public class PropertyParserTests
     public void Invalid_Token_Because_Of_Too_Many_Parts()
     {
         var dict = new Dictionary<string, string>();
-        var t = new PropertyParser(null);
+        var t = new PropertyParser(null!);
 
         var template = "{spaceDataTypeRunning|tokenName|fsd|fds|fsd}";
         var outcome = t.Parse(template, dict);

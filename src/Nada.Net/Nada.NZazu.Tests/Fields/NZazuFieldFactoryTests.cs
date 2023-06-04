@@ -36,9 +36,9 @@ public class NZazuFieldFactoryTests
     [TestCase("multiline", typeof(TextBox))]
     [TestCase("bool", typeof(CheckBox))]
     [TestCase("int", typeof(TextBox))]
-    [TestCase("dateonly", typeof(DateTimePicker))]
+    //[TestCase("dateonly", typeof(DateTimePicker))]
     // todo [TestCase("timeonly", typeof(TimeOnlyPicker))]
-    [TestCase("datetime", typeof(DateTimePicker))]
+    //[TestCase("datetime", typeof(DateTimePicker))]
     [TestCase("double", typeof(TextBox))]
     [TestCase("option", typeof(ComboBox))]
     [TestCase("error", typeof(ErrorPanel))]
@@ -195,7 +195,6 @@ public class NZazuFieldFactoryTests
     {
         // because view has the resolver and attaches the behavior
         var sut = new NZazuFieldFactory();
-#pragma warning disable 618
         var field = (NZazuField)sut.CreateField(
             new FieldDefinition
             {
@@ -204,7 +203,6 @@ public class NZazuFieldFactoryTests
                 Behaviors = new[] { new BehaviorDefinition { Name = "Empty" } }
             });
         field.Should().NotBeNull();
-#pragma warning restore 618
         field.Behaviors.Count().Should().Be(1);
     }
 

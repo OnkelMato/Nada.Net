@@ -23,11 +23,11 @@ public class AggregateCheckTests
     {
         var check1 = Substitute.For<IValueCheck>();
         var check2 = Substitute.For<IValueCheck>();
-        check1.Validate(null, null).Returns((ValueCheckResult)null);
-        check2.Validate(null, null).Returns((ValueCheckResult)null);
+        check1.Validate(null, null).Returns((ValueCheckResult)null!);
+        check2.Validate(null, null).Returns((ValueCheckResult)null!);
 
         var sut = new AggregateCheck(new[] { check1, check2 });
-        var result = sut.Validate(null, null, null);
+        var result = sut.Validate(null, null, null!);
 
         result.Should().NotBeNull();
         result.IsValid.Should().BeTrue();
@@ -39,18 +39,18 @@ public class AggregateCheckTests
     {
         var check1 = Substitute.For<IValueCheck>();
         var check2 = Substitute.For<IValueCheck>();
-        check1.Validate(null, null).Returns((ValueCheckResult)null);
-        check2.Validate(null, null).Returns((ValueCheckResult)null);
+        check1.Validate(null, null).Returns((ValueCheckResult)null!);
+        check2.Validate(null, null).Returns((ValueCheckResult)null!);
 
         var sut = new AggregateCheck(new[] { check1, check2 });
-        var result = sut.Validate(null, null, null);
+        var result = sut.Validate(null, null, null!);
 
         result.Should().NotBeNull();
         result.IsValid.Should().BeTrue();
         result.Exception.Should().BeNull();
 
-        check1.Received(1).Validate(null, null);
-        check2.Received(1).Validate(null, null);
+        check1.Received(1).Validate(null, null!);
+        check2.Received(1).Validate(null, null!);
     }
 
     [Test]
@@ -65,7 +65,7 @@ public class AggregateCheckTests
         check2.Validate(null, null).Returns(checkResult2);
 
         var sut = new AggregateCheck(new[] { check1, check2 });
-        var result = sut.Validate(null, null, null);
+        var result = sut.Validate(null, null, null!);
 
         result.Should().NotBeNull();
         result.Should().Be(checkResult1, "we return the one and only error");
@@ -84,44 +84,11 @@ public class AggregateCheckTests
         check2.Validate(null, null).Returns(new ValueCheckResult(exception2));
 
         var sut = new AggregateCheck(new[] { check1, check2 });
-        var result = sut.Validate(null, null, null);
+        var result = sut.Validate(null, null, null!);
 
         result.Should().NotBeNull();
         result.Should().BeOfType<AggregateValueCheckResult>("we return an aggregation of all errors");
         result.IsValid.Should().BeFalse();
         result.Exception.Should().BeOfType<AggregateException>();
     }
-
-    //const string input = "foobar";
-    //var formatProvider = CultureInfo.InvariantCulture;
-    //var error = new ValueCheckResult(true, new Exception("test"));
-    //var errorsValid = new AggregateValueCheckResult(Enumerable.Empty<ValueCheckResult>());
-    //var errors = new AggregateValueCheckResult(new[] { error });
-
-    //// true AND true => true
-    //check1.Validate(input, input, formatProvider).Returns(ValueCheckResult.Success);
-    //check2.Validate(input, input, formatProvider).Returns(ValueCheckResult.Success);
-    //sut.Validate(input, input, formatProvider);
-
-    //check1.Received().Validate(input, input, formatProvider);
-    //check2.Received().Validate(input, input, formatProvider);
-
-    //// false AND false => false
-    //check1.Validate(input, input, formatProvider).Returns(error);
-    //check2.Validate(input, input, formatProvider).Returns(error);
-
-    //var actual = sut.Validate(input, input, formatProvider);
-    //actual.Should().BeEquivalentTo(errorsValid);
-
-    //// false AND true => false
-    //check2.Validate(input, input, formatProvider).Returns(ValueCheckResult.Success);
-    //actual = sut.Validate(input, input, formatProvider);
-    //actual.Should().Be(error);
-
-    //// true AND false => false
-    //check1.Validate(input, input, formatProvider).Returns(ValueCheckResult.Success);
-    //check2.Validate(input, input, formatProvider).Returns(error);
-    //actual = sut.Validate(input, input, formatProvider);
-    //actual.Should().Be(error);
-    //}
 }

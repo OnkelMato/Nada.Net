@@ -190,13 +190,13 @@ public class NZazuDoubleFieldTests
         var converter = new NZazuDoubleField.DoubleToStringConverter(culture: culture);
 
         // lets do some fake edits which means the string is entered char by char
-        VerifyConvert(converter, "", null);
+        VerifyConvert(converter, "", null!);
         VerifyConvert(converter, "3", 3);
         VerifyConvert(converter, "35", 35);
         VerifyConvert(converter, "35" + separator, 35);
         VerifyConvert(converter, "35" + separator + "3", 35.3);
         VerifyConvert(converter, "35" + separator, 35);
-        VerifyConvert(converter, "35" + separator + separator, null);
+        VerifyConvert(converter, "35" + separator + separator, null!);
         VerifyConvert(converter, "35" + separator, 35);
         VerifyConvert(converter, "35" + separator + "3", 35.3);
     }
@@ -223,9 +223,9 @@ public class NZazuDoubleFieldTests
 
     private static void VerifyConvert(IValueConverter converter, string input, double? expected)
     {
-        var value = (double?)converter.ConvertBack(input, null, null, null);
+        var value = (double?)converter.ConvertBack(input, null, null, null!);
         value.Should().Be(expected);
-        var text = (string)converter.Convert(value, null, null, null);
+        var text = (string)converter.Convert(value, null, null, null!);
         text.Should().Be(input);
     }
 }

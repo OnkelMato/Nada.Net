@@ -131,7 +131,7 @@ public class NZazuImageViewerFieldTests
         sut.ToggleValues();
         sut.GetValue().Should().Be(@"http://img/3.jpg");
         sut.ToggleValues();
-        sut.GetValue().Should().Be(null);
+        sut.GetValue().Should().Be(null!);
         sut.ToggleValues();
         sut.GetValue().Should().Be(@"http://img/1.jpg");
     }
@@ -164,7 +164,7 @@ public class NZazuImageViewerFieldTests
         sut.ToggleValues(true);
         sut.GetValue().Should().Be(@"http://img/1.jpg");
         sut.ToggleValues(true);
-        sut.GetValue().Should().Be(null);
+        sut.GetValue().Should().Be(null!);
         sut.ToggleValues(true);
         sut.GetValue().Should().Be(@"http://img/3.jpg");
     }
@@ -223,11 +223,11 @@ public class NZazuImageViewerFieldTests
 
         sut.Definition.Settings["AllowNullValues"] = "true";
         sut.ToggleValues();
-        sut.GetValue().Should().Be(null);
+        sut.GetValue().Should().Be(null!);
         sut.ToggleValues();
         sut.GetValue().Should().Be(initValue);
         sut.ToggleValues();
-        sut.GetValue().Should().Be(null);
+        sut.GetValue().Should().Be(null!);
     }
 
     [Test]
@@ -242,22 +242,22 @@ public class NZazuImageViewerFieldTests
         }, ServiceLocator);
         sut.Definition.Settings.Add("AllowNullValues", "false");
         sut.Definition.Settings.Add("AllowCustomValues", "false");
-        sut.SetValue(null);
+        sut.SetValue(null!);
 
-        sut.GetValue().Should().Be(null);
+        sut.GetValue().Should().Be(null!);
 
         // lets toggle a bit
         sut.ToggleValues();
-        sut.GetValue().Should().Be(null);
+        sut.GetValue().Should().Be(null!);
         sut.ToggleValues();
-        sut.GetValue().Should().Be(null);
+        sut.GetValue().Should().Be(null!);
 
         sut.Definition.Settings["AllowNullValues"] = "true";
         sut.ToggleValues();
-        sut.GetValue().Should().Be(null);
+        sut.GetValue().Should().Be(null!);
         sut.ToggleValues();
-        sut.GetValue().Should().Be(null);
+        sut.GetValue().Should().Be(null!);
         sut.ToggleValues();
-        sut.GetValue().Should().Be(null);
+        sut.GetValue().Should().Be(null!);
     }
 }

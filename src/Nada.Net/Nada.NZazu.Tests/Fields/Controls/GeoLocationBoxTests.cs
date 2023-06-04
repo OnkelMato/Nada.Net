@@ -23,7 +23,7 @@ public class GeoLocationBoxTests
         sut.GeoLocationSupport = formatter;
         sut.GeoLocationSupport.Should().Be(formatter);
 
-        sut.Value.Should().Be(null);
+        sut.Value.Should().Be(null!);
         sut.Value = new NZazuCoordinate { Lat = 53.1, Lon = 7.2 };
         sut.Value.Lat.Should().Be(53.1);
         sut.Value.Lon.Should().Be(7.2);
@@ -41,7 +41,7 @@ public class GeoLocationBoxTests
         var formatter = Substitute.For<ISupportGeoLocationBox>();
         sut.GeoLocationSupport = formatter;
 
-        sut.OpenInGeoAppClick(null, null);
-        sut.SetToCurrentLocationClick(null, null);
+        sut.OpenInGeoAppClick(null, null!);
+        sut.SetToCurrentLocationClick(null, null!);
     }
 }

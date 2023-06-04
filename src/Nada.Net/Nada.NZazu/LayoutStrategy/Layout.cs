@@ -18,7 +18,7 @@ public abstract class Layout : INZazuWpfLayoutStrategy
     public abstract void DoLayout(
         ContentControl contentControl,
         IEnumerable<INZazuWpfField> fields,
-        IResolveLayout resolveLayout = null);
+        IResolveLayout resolveLayout = null!);
 
     protected void SetErrorTemplate(Control valueElement)
     {

@@ -22,7 +22,7 @@ public class StringRegExCheckTests
         var sut = ctx.BuildSut();
 
         sut.Should().NotBeNull();
-        sut.GetType().GetCustomAttribute<DisplayNameAttribute>().DisplayName.Should().Be("regex");
+        sut.GetType().GetCustomAttribute<DisplayNameAttribute>()!.DisplayName.Should().Be("regex");
     }
 
     [Test]
@@ -52,7 +52,7 @@ public class StringRegExCheckTests
         ctx.Use(settings);
         var sut = ctx.BuildSut();
 
-        sut.ShouldPass(null, null);
+        sut.ShouldPass(null!, null!);
         sut.ShouldPass(string.Empty, string.Empty);
         sut.ShouldPass("\t\r\n", "\t\r\n");
         sut.ShouldPass(" ", " ");
@@ -69,10 +69,10 @@ public class StringRegExCheckTests
         var sut = ctx.BuildSut();
 
         sut.ShouldPass("joe.doe@domain.com", "joe.doe@domain.com");
-        sut.ShouldFailWith<ArgumentException>("@domain.com", null); // missing account prefix
-        sut.ShouldFailWith<ArgumentException>("joe.doe_domain.com", null); // missing separator '@'
-        sut.ShouldFailWith<ArgumentException>("joe.doe@", null); // missing domain
-        sut.ShouldFailWith<ArgumentException>("joe.doe@domain_de", null); // missing domain separator '.'
+        sut.ShouldFailWith<ArgumentException>("@domain.com", null!); // missing account prefix
+        sut.ShouldFailWith<ArgumentException>("joe.doe_domain.com", null!); // missing separator '@'
+        sut.ShouldFailWith<ArgumentException>("joe.doe@", null!); // missing domain
+        sut.ShouldFailWith<ArgumentException>("joe.doe@domain_de", null!); // missing domain separator '.'
     }
 
     [Test]

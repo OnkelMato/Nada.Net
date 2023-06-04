@@ -45,7 +45,7 @@ public class NZazuGroupFieldTests
     public void Not_support_direct_binding_or_validation()
     {
         var sut = new NZazuGroupField(new FieldDefinition { Key = "key" }, ServiceLocator);
-        sut.ContentProperty.Should().Be(null);
+        sut.ContentProperty.Should().Be(null!);
     }
 
     [Test]

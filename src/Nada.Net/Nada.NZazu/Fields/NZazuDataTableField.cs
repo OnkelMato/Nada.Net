@@ -192,17 +192,13 @@ public class NZazuDataTableField
                 result.Add(new ValueCheckResult(false, tempResult.Exception));
         }
 
-        switch (result.Count)
+        return result.Count switch
         {
-            case 0:
-                return ValueCheckResult.Success;
-            case 1:
-                return result.First();
-            default:
-                return new ValueCheckResult(
-                    result.Any(x => x.IsValid),
-                    new Exception(string.Concat(result.Select(x => x.ToString()).ToArray())));
-        }
+            0 => ValueCheckResult.Success,
+            1 => result.First(),
+            _ => new ValueCheckResult(result.Any(x => x.IsValid),
+                new Exception(string.Concat(result.Select(x => x.ToString()).ToArray())))
+        };
     }
 
     protected override void Dispose(bool disposing)
@@ -320,7 +316,7 @@ public class NZazuDataTableField
 
     internal void DeleteRow(object sender)
     {
-        if (!(sender is Control ctrl)) return;
+        if (sender is not Control ctrl) return;
 
         var row = Grid.GetRow(ctrl);
         if (row == 0) return; // cannot delete header
@@ -385,7 +381,7 @@ public class NZazuDataTableField
 
     internal void AddRowAbove(object sender)
     {
-        if (!(sender is Control ctrl)) return;
+        if (sender is not Control ctrl) return;
 
         var row = Grid.GetRow(ctrl);
         if (row == 0) return; // cannot insert above header

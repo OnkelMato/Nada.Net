@@ -107,7 +107,7 @@ public class NZazuView : ScrollViewer, INZazuWpfView, IDisposable
     {
         var safeFocusOn = focusOn ?? (FormData.Values.ContainsKey(FocusOnFieldName)
             ? FormData.Values[FocusOnFieldName]
-            : null);
+            : null!);
         if (string.IsNullOrWhiteSpace(safeFocusOn) || !TryGetField(safeFocusOn, out var field)) return false;
 
         var control = field.ValueControl;

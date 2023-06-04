@@ -27,7 +27,7 @@ public class DictionaryExtensionsTests
             { { "name", "thomas" }, { "street", "123 Ave" }, { "nullthing", null } };
 
         var expected1 = new Dictionary<string, string> { { "name", "thomas" }, { "street", "123 Ave" } };
-        var actual1 = source.Remove(kvp => kvp.Value == null);
+        var actual1 = source.Remove(kvp => kvp.Value == null!);
         actual1.Should().BeEquivalentTo(expected1);
 
         var expected2 = new Dictionary<string, string> { { "street", "123 Ave" }, { "nullthing", null } };
@@ -104,7 +104,7 @@ public class DictionaryExtensionsTests
     {
         var src = new Dictionary<string, string> { { "key", "value" } };
         src.Get("key").Should().Be("value");
-        src.Get("foo").Should().Be(null);
+        src.Get("foo").Should().Be(null!);
         src.Get("foo", "value2").Should().Be("value2");
     }
 
@@ -118,7 +118,7 @@ public class DictionaryExtensionsTests
         };
         src.Get<double>("key").Should().Be(100);
         src.Get<double>("key2").Should().Be(200.4);
-        src.Get<double>("foo").Should().Be(null);
+        src.Get<double>("foo").Should().Be(null!);
     }
 
     [Test]

@@ -25,9 +25,11 @@ public class RangeCheck : IValueCheck
         public int MaxInt => Convert.ToInt32(Max ?? int.MaxValue.ToString());
     } // ReSharper disable UnusedParameter.Local
     public RangeCheck(
+#pragma warning disable IDE0060
         IDictionary<string, string> settings, Func<FormData> formData,
         INZazuTableDataSerializer tableSerializer, int rowIdx,
         FieldDefinition fieldDefinition)
+#pragma warning enable IDE0060
     {
         Settings = settings.ToDictionary(x => x.Key, x => (object)x.Value).ToObject<RangeCheckSettings>();
 

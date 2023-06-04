@@ -4,18 +4,22 @@ using System.Linq;
 
 namespace Nada.NZazu.Contracts.Checks;
 
+/// <inheritdoc cref="IValueCheck"/>
 public class AggregateCheck : IValueCheck
 {
     private readonly List<IValueCheck> _checks;
 
 
+    /// <inheritdoc cref="IValueCheck"/>
     public AggregateCheck(IEnumerable<IValueCheck> checks)
     {
         _checks = (checks ?? Enumerable.Empty<IValueCheck>()).ToList();
     }
 
+    /// <inheritdoc cref="IValueCheck"/>
     public IEnumerable<IValueCheck> Checks => _checks;
 
+    /// <inheritdoc cref="IValueCheck"/>
     public ValueCheckResult Validate(string value, object parsedValue, IFormatProvider formatProvider)
     {
         var invalidChecks = _checks
@@ -23,11 +27,11 @@ public class AggregateCheck : IValueCheck
             .Where(x => !x.IsValid)
             .ToArray();
 
-        switch (invalidChecks.Length)
+        return invalidChecks.Length switch
         {
-            case 0: return ValueCheckResult.Success;
-            case 1: return invalidChecks.First();
-            default: return new AggregateValueCheckResult(invalidChecks);
-        }
+            0 => ValueCheckResult.Success,
+            1 => invalidChecks.First(),
+            _ => new AggregateValueCheckResult(invalidChecks)
+        };
     }
 }

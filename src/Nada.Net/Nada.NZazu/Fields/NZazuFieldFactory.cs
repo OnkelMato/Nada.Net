@@ -91,7 +91,7 @@ public class NZazuFieldFactory : INZazuWpfFieldFactory
     {
         if (x == null) x = typeof(T);
 
-        return (T)(_serviceLocator.ContainsKey(x) ? _serviceLocator[x] : null);
+        return (T)(_serviceLocator.ContainsKey(x) ? _serviceLocator[x] : null!);
     }
 
     public void Use<T>(T service)
