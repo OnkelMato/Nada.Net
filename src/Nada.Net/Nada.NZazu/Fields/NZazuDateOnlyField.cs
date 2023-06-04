@@ -39,18 +39,18 @@ public class NZazuDateOnlyField : NZazuField<DateOnly?>
     public override void SetValue(string value)
     {
         var parsed = false;
-        var result = new DateOnly();
+        var parsedDt = new DateTime();
 
         if (!string.IsNullOrWhiteSpace(value))
         {
             const DateTimeStyles dateTimeStyles = DateTimeStyles.AssumeLocal;
             parsed = string.IsNullOrWhiteSpace(DateInternalFormat)
-                ? DateOnly.TryParse(value, FormatProvider, dateTimeStyles, out result)
-                : DateOnly.TryParseExact(value, DateInternalFormat, FormatProvider, dateTimeStyles, out result);
+                ? DateTime.TryParse(value, FormatProvider, dateTimeStyles, out parsedDt)
+                : DateTime.TryParseExact(value, DateInternalFormat, FormatProvider, dateTimeStyles, out parsedDt);
         }
 
         if (parsed)
-            Value = new DateOnly(result.Year, result.Month, result.Day);
+            Value = new DateOnly(parsedDt.Year, parsedDt.Month, parsedDt.Day);
         else
             Value = null;
     }
