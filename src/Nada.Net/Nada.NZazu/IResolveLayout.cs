@@ -1,6 +1,5 @@
-namespace Nada.NZazu
+namespace Nada.NZazu;
+
+public interface IResolveLayout : IResolveFromName<INZazuWpfLayoutStrategy>
 {
-    public interface IResolveLayout : IResolveFromName<INZazuWpfLayoutStrategy>
-    {
-    }
 }

@@ -13,7 +13,8 @@ internal class TimeOnlyTokenTypeHandler : ITokenTypeHandler
 
     public bool CanHandle(string dataType)
     {
-        return string.Equals(dataType, "timeonly", StringComparison.OrdinalIgnoreCase) || string.Equals(dataType, "to", StringComparison.OrdinalIgnoreCase);
+        return string.Equals(dataType, "timeonly", StringComparison.OrdinalIgnoreCase) ||
+               string.Equals(dataType, "to", StringComparison.OrdinalIgnoreCase);
     }
 
     public TokenHandlerResult Handle(string key, string value, string additionalInformation,

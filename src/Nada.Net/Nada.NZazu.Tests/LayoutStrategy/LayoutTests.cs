@@ -1,14 +1,10 @@
-
-
-using Nada.NZazu.LayoutStrategy;
 using NUnit.Framework;
 
-namespace Nada.NZazu.Tests.LayoutStrategy
+namespace Nada.NZazu.Tests.LayoutStrategy;
+
+[TestFixture]
+// ReSharper disable InconsistentNaming
+public class LayoutTests
 {
-    [TestFixture]
-    // ReSharper disable InconsistentNaming
-    public class LayoutTests
-    {
-        // TODO: code is covered, though. Write tests?
-    }
+    // TODO: code is covered, though. Write tests?
 }

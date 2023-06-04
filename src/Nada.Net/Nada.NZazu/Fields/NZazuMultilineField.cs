@@ -3,42 +3,41 @@ using System.Windows;
 using System.Windows.Controls;
 using Nada.NZazu.Contracts;
 
-namespace Nada.NZazu.Fields
+namespace Nada.NZazu.Fields;
+
+public class NZazuMultilineField : NZazuField<string>
 {
-    public class NZazuMultilineField : NZazuField<string>
+    private readonly Lazy<Control> _lazyControl;
+
+    public NZazuMultilineField(FieldDefinition definition, Func<Type, object> serviceLocatorFunc)
+        : base(definition, serviceLocatorFunc)
     {
-        private readonly Lazy<Control> _lazyControl;
-
-        public NZazuMultilineField(FieldDefinition definition, Func<Type, object> serviceLocatorFunc)
-            : base(definition, serviceLocatorFunc)
+        _lazyControl = new Lazy<Control>(() => new TextBox
         {
-            _lazyControl = new Lazy<Control>(() => new TextBox
-            {
-                ToolTip = Definition.Description,
-                HorizontalAlignment = HorizontalAlignment.Stretch,
-                VerticalAlignment = VerticalAlignment.Stretch,
-                AcceptsReturn = true,
-                TextWrapping = TextWrapping.Wrap,
-                MinHeight = 85
-            }, true);
-        }
+            ToolTip = Definition.Description,
+            HorizontalAlignment = HorizontalAlignment.Stretch,
+            VerticalAlignment = VerticalAlignment.Stretch,
+            AcceptsReturn = true,
+            TextWrapping = TextWrapping.Wrap,
+            MinHeight = 85
+        }, true);
+    }
 
-        public override DependencyProperty ContentProperty => TextBox.TextProperty;
+    public override DependencyProperty ContentProperty => TextBox.TextProperty;
 
-        public override void SetValue(string value)
-        {
-            Value = value;
-        }
+    public override void SetValue(string value)
+    {
+        Value = value;
+    }
 
-        public override string GetValue()
-        {
-            CreateValueControl().GetValue(ContentProperty);
-            return Value;
-        }
+    public override string GetValue()
+    {
+        CreateValueControl().GetValue(ContentProperty);
+        return Value;
+    }
 
-        protected override Control CreateValueControl()
-        {
-            return _lazyControl.Value;
-        }
+    protected override Control CreateValueControl()
+    {
+        return _lazyControl.Value;
     }
 }

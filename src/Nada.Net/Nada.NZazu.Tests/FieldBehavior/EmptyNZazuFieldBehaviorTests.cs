@@ -3,39 +3,38 @@ using Nada.NZazu.FieldBehavior;
 using NSubstitute;
 using NUnit.Framework;
 
-namespace Nada.NZazu.Tests.FieldBehavior
+namespace Nada.NZazu.Tests.FieldBehavior;
+
+[TestFixture]
+// ReSharper disable once InconsistentNaming
+public class EmptyNZazuFieldBehaviorTests
 {
-    [TestFixture]
-    // ReSharper disable once InconsistentNaming
-    public class EmptyNZazuFieldBehaviorTests
+    [Test]
+    public void Be_Creatable()
     {
-        [Test]
-        public void Be_Creatable()
-        {
-            var sut = new EmptyNZazuFieldBehavior();
-            sut.Should().NotBeNull();
-            sut.Should().BeAssignableTo<INZazuWpfFieldBehavior>();
-            sut.GetType().Name.Should().StartWith("Empty");
-        }
+        var sut = new EmptyNZazuFieldBehavior();
+        sut.Should().NotBeNull();
+        sut.Should().BeAssignableTo<INZazuWpfFieldBehavior>();
+        sut.GetType().Name.Should().StartWith("Empty");
+    }
 
-        [Test]
-        public void Have_guard_clauses_on_ctor()
-        {
-            var sut = new EmptyNZazuFieldBehavior();
+    [Test]
+    public void Have_guard_clauses_on_ctor()
+    {
+        var sut = new EmptyNZazuFieldBehavior();
 
-            sut.Invoking(x => x.AttachTo(null, null)).Should().Throw<ArgumentNullException>();
-        }
+        sut.Invoking(x => x.AttachTo(null, null)).Should().Throw<ArgumentNullException>();
+    }
 
-        [Test]
-        public void Do_Nothing()
-        {
-            var field = Substitute.For<INZazuWpfField>();
-            var sut = new EmptyNZazuFieldBehavior();
+    [Test]
+    public void Do_Nothing()
+    {
+        var field = Substitute.For<INZazuWpfField>();
+        var sut = new EmptyNZazuFieldBehavior();
 
-            sut.AttachTo(field, null);
-            sut.Detach();
+        sut.AttachTo(field, null);
+        sut.Detach();
 
-            field.ReceivedCalls().Should().BeEmpty();
-        }
+        field.ReceivedCalls().Should().BeEmpty();
     }
 }

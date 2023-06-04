@@ -4,32 +4,31 @@ using Nada.NZazu.Extensions;
 using NSubstitute;
 using NUnit.Framework;
 
-namespace Nada.NZazu.Tests.Extensions
+namespace Nada.NZazu.Tests.Extensions;
+
+[TestFixture]
+// ReSharper disable InconsistentNaming
+public class ViewExtensionsTests
 {
-    [TestFixture]
-    // ReSharper disable InconsistentNaming
-    public class ViewExtensionsTests
+    [Test]
+    public void Return_False_If_Validate_Has_Exception()
     {
-        [Test]
-        public void Return_False_If_Validate_Has_Exception()
-        {
-            var view = Substitute.For<INZazuWpfView>();
-            view.Validate().Returns(new ValueCheckResult(false, new Exception("I am invalid")));
+        var view = Substitute.For<INZazuWpfView>();
+        view.Validate().Returns(new ValueCheckResult(false, new Exception("I am invalid")));
 
-            view.IsValid().Should().BeFalse();
+        view.IsValid().Should().BeFalse();
 
-            view.ReceivedWithAnyArgs().Validate();
-        }
+        view.ReceivedWithAnyArgs().Validate();
+    }
 
-        [Test]
-        public void Return_True_If_Validate()
-        {
-            var view = Substitute.For<INZazuWpfView>();
-            view.Validate().Returns(ValueCheckResult.Success);
+    [Test]
+    public void Return_True_If_Validate()
+    {
+        var view = Substitute.For<INZazuWpfView>();
+        view.Validate().Returns(ValueCheckResult.Success);
 
-            view.IsValid().Should().BeTrue();
+        view.IsValid().Should().BeTrue();
 
-            view.ReceivedWithAnyArgs().Validate();
-        }
+        view.ReceivedWithAnyArgs().Validate();
     }
 }

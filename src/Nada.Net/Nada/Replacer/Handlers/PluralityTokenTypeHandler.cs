@@ -4,7 +4,8 @@ internal class PluralityTokenTypeHandler : ITokenTypeHandler
 {
     public bool CanHandle(string dataType)
     {
-        return string.Equals(dataType, "plurality", StringComparison.OrdinalIgnoreCase) || string.Equals(dataType, "p", StringComparison.OrdinalIgnoreCase);
+        return string.Equals(dataType, "plurality", StringComparison.OrdinalIgnoreCase) ||
+               string.Equals(dataType, "p", StringComparison.OrdinalIgnoreCase);
     }
 
     public TokenHandlerResult Handle(string key, string value, string additionalInformation,

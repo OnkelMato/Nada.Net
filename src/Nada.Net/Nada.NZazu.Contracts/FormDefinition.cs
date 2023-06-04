@@ -1,9 +1,8 @@
-﻿namespace Nada.NZazu.Contracts
+﻿namespace Nada.NZazu.Contracts;
+
+public class FormDefinition
 {
-    public class FormDefinition
-    {
-        public FieldDefinition[] Fields { get; set; }
-        public string Layout { get; set; }
-        public CheckDefinition[] Checks { get; set; }
-    }
+    public FieldDefinition[] Fields { get; set; }
+    public string Layout { get; set; }
+    public CheckDefinition[] Checks { get; set; }
 }

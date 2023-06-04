@@ -8,93 +8,92 @@ using Nada.NZazu.Extensions;
 using Nada.NZazu.Fields;
 using NUnit.Framework;
 
-namespace Nada.NZazu.Tests.Fields
+namespace Nada.NZazu.Tests.Fields;
+
+[TestFixture]
+[Apartment(ApartmentState.STA)]
+// ReSharper disable InconsistentNaming
+public class NZazuOptionsFieldTests
 {
-    [TestFixture]
-    [Apartment(ApartmentState.STA)]
-    // ReSharper disable InconsistentNaming
-    public class NZazuOptionsFieldTests
+    [ExcludeFromCodeCoverage]
+    private object ServiceLocator(Type type)
     {
-        [ExcludeFromCodeCoverage]
-        private object ServiceLocator(Type type)
+        if (type == typeof(IValueConverter)) return NoExceptionsConverter.Instance;
+        if (type == typeof(IFormatProvider)) return CultureInfo.InvariantCulture;
+        throw new NotSupportedException($"Cannot lookup {type.Name}");
+    }
+
+    [Test]
+    public void Be_Creatable()
+    {
+        var sut = new NZazuOptionsField(new FieldDefinition { Key = "key" }, ServiceLocator);
+
+        sut.Should().NotBeNull();
+        sut.Should().BeAssignableTo<INZazuWpfField>();
+    }
+
+    [Test(Description = "https://github.com/awesome-inc/NZazu/issues/68")]
+    [STAThread]
+    public void Create_ComboBox()
+    {
+        var sut = new NZazuOptionsField(new FieldDefinition { Key = "key", Description = "description" },
+            ServiceLocator);
+
+        sut.ContentProperty.Should().Be(ComboBox.TextProperty);
+        var control = (ComboBox)sut.ValueControl;
+        control.Should().NotBeNull();
+
+        control.ToolTip.Should().Be(sut.Definition.Description);
+    }
+
+    [Test(Description = "https://github.com/awesome-inc/NZazu/issues/68")]
+    [STAThread]
+    public void Reflect_changing_Value_in_TextProperty()
+    {
+        var sut = new NZazuOptionsField(new FieldDefinition { Key = "key" }, ServiceLocator)
         {
-            if (type == typeof(IValueConverter)) return NoExceptionsConverter.Instance;
-            if (type == typeof(IFormatProvider)) return CultureInfo.InvariantCulture;
-            throw new NotSupportedException($"Cannot lookup {type.Name}");
-        }
+            Options = new[] { "1", "2", "3", "4", "5" }
+        };
 
-        [Test]
-        public void Be_Creatable()
-        {
-            var sut = new NZazuOptionsField(new FieldDefinition {Key = "key"}, ServiceLocator);
+        var control = (ComboBox)sut.ValueControl;
+        control.Items.Should().BeEquivalentTo(sut.Options);
+        control.IsEditable.Should().BeFalse();
 
-            sut.Should().NotBeNull();
-            sut.Should().BeAssignableTo<INZazuWpfField>();
-        }
+        sut.Value.Should().BeNull();
+        control.SelectedItem.Should().BeNull();
 
-        [Test(Description = "https://github.com/awesome-inc/NZazu/issues/68")]
-        [STAThread]
-        public void Create_ComboBox()
-        {
-            var sut = new NZazuOptionsField(new FieldDefinition {Key = "key", Description = "description"},
-                ServiceLocator);
+        // value -> selected item
+        var expected = sut.Options.First();
+        sut.Value = expected;
+        control.Text.Should().Be(expected);
 
-            sut.ContentProperty.Should().Be(ComboBox.TextProperty);
-            var control = (ComboBox) sut.ValueControl;
-            control.Should().NotBeNull();
+        // selected item -> value
+        expected = sut.Options.Last();
+        control.SelectedItem = expected;
+        sut.Value.Should().Be(expected);
 
-            control.ToolTip.Should().Be(sut.Definition.Description);
-        }
+        // custom values
+        expected = "42";
+        sut.Value = expected;
+        sut.Value.Should().Be(expected);
+        control.Text.Should().Be(expected);
 
-        [Test(Description = "https://github.com/awesome-inc/NZazu/issues/68")]
-        [STAThread]
-        public void Reflect_changing_Value_in_TextProperty()
-        {
-            var sut = new NZazuOptionsField(new FieldDefinition {Key = "key"}, ServiceLocator)
-            {
-                Options = new[] {"1", "2", "3", "4", "5"}
-            };
+        control.SelectedItem = expected;
+        control.Text.Should().Be(expected);
+    }
 
-            var control = (ComboBox) sut.ValueControl;
-            control.Items.Should().BeEquivalentTo(sut.Options);
-            control.IsEditable.Should().BeFalse();
+    [Test]
+    public void Identify_Value_with_StringValue()
+    {
+        var sut = new NZazuOptionsField(new FieldDefinition { Key = "key" }, ServiceLocator);
 
-            sut.Value.Should().BeNull();
-            control.SelectedItem.Should().BeNull();
+        sut.Value.Should().BeNull();
+        sut.GetValue().Should().Be(sut.Value);
 
-            // value -> selected item
-            var expected = sut.Options.First();
-            sut.Value = expected;
-            control.Text.Should().Be(expected);
+        sut.SetValue("1");
+        sut.Value.Should().Be(sut.GetValue());
 
-            // selected item -> value
-            expected = sut.Options.Last();
-            control.SelectedItem = expected;
-            sut.Value.Should().Be(expected);
-
-            // custom values
-            expected = "42";
-            sut.Value = expected;
-            sut.Value.Should().Be(expected);
-            control.Text.Should().Be(expected);
-
-            control.SelectedItem = expected;
-            control.Text.Should().Be(expected);
-        }
-
-        [Test]
-        public void Identify_Value_with_StringValue()
-        {
-            var sut = new NZazuOptionsField(new FieldDefinition {Key = "key"}, ServiceLocator);
-
-            sut.Value.Should().BeNull();
-            sut.GetValue().Should().Be(sut.Value);
-
-            sut.SetValue("1");
-            sut.Value.Should().Be(sut.GetValue());
-
-            sut.Value = "2";
-            sut.GetValue().Should().Be(sut.Value);
-        }
+        sut.Value = "2";
+        sut.GetValue().Should().Be(sut.Value);
     }
 }

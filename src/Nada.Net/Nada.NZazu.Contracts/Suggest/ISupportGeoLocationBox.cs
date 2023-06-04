@@ -1,17 +1,16 @@
 using System.Threading.Tasks;
 using Nada.NZazu.Contracts.Adapter;
 
-namespace Nada.NZazu.Contracts.Suggest
+namespace Nada.NZazu.Contracts.Suggest;
+
+public interface ISupportGeoLocationBox
 {
-    public interface ISupportGeoLocationBox
-    {
-        bool HasCurrentPosition { get; }
-        NZazuCoordinate CurrentPosition { get; }
+    bool HasCurrentPosition { get; }
+    NZazuCoordinate CurrentPosition { get; }
 
-        bool CanOpenGeoApp { get; }
-        Task OpenGeoApp(NZazuCoordinate nZazuCoordinate);
+    bool CanOpenGeoApp { get; }
+    Task OpenGeoApp(NZazuCoordinate nZazuCoordinate);
 
-        string ToString(NZazuCoordinate c);
-        NZazuCoordinate Parse(string source);
-    }
+    string ToString(NZazuCoordinate c);
+    NZazuCoordinate Parse(string source);
 }

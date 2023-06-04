@@ -4,7 +4,8 @@ internal class GuidTokenTypeHandler : ITokenTypeHandler
 {
     public bool CanHandle(string dataType)
     {
-        return string.Equals(dataType, "guid", StringComparison.OrdinalIgnoreCase) || string.Equals(dataType, "g", StringComparison.OrdinalIgnoreCase);
+        return string.Equals(dataType, "guid", StringComparison.OrdinalIgnoreCase) ||
+               string.Equals(dataType, "g", StringComparison.OrdinalIgnoreCase);
     }
 
     public TokenHandlerResult Handle(string key, string value, string additionalInformation,

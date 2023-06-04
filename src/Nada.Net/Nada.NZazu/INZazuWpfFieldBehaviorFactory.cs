@@ -1,9 +1,8 @@
 using Nada.NZazu.Contracts;
 
-namespace Nada.NZazu
+namespace Nada.NZazu;
+
+public interface INZazuWpfFieldBehaviorFactory
 {
-    public interface INZazuWpfFieldBehaviorFactory
-    {
-        INZazuWpfFieldBehavior CreateFieldBehavior(BehaviorDefinition behaviorDefinition);
-    }
+    INZazuWpfFieldBehavior CreateFieldBehavior(BehaviorDefinition behaviorDefinition);
 }

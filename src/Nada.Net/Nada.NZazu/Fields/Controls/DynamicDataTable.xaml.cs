@@ -1,13 +1,12 @@
-﻿namespace Nada.NZazu.Fields.Controls
+﻿namespace Nada.NZazu.Fields.Controls;
+
+/// <summary>
+///     Interaction logic for DynamicDataTable.xaml
+/// </summary>
+public partial class DynamicDataTable
 {
-    /// <summary>
-    ///     Interaction logic for DynamicDataTable.xaml
-    /// </summary>
-    public partial class DynamicDataTable
+    public DynamicDataTable()
     {
-        public DynamicDataTable()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

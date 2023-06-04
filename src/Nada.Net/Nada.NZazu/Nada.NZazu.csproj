@@ -8,6 +8,7 @@
 		<ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
 		<EnablePackageValidation>true</EnablePackageValidation>
 		<Version>0.0.1.0</Version>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 	</PropertyGroup>
 
 	<PropertyGroup>

@@ -2,30 +2,29 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using Nada.NZazu.Contracts.Suggest;
 
-namespace Nada.NZazu.Contracts.Adapter
+namespace Nada.NZazu.Contracts.Adapter;
+
+public class SupportGeoLocationBox : ISupportGeoLocationBox
 {
-    public class SupportGeoLocationBox : ISupportGeoLocationBox
+    public virtual bool HasCurrentPosition { get; } = false;
+
+    public virtual NZazuCoordinate CurrentPosition { get; } = null;
+
+    public bool CanOpenGeoApp { get; } = true;
+
+    public Task OpenGeoApp(NZazuCoordinate c)
     {
-        public virtual bool HasCurrentPosition { get; } = false;
+        return Task.Run(() => Process.Start($"https://www.google.com/maps/place/@{c.Lat},{c.Lon},14z"));
+    }
 
-        public virtual NZazuCoordinate CurrentPosition { get; } = null;
+    public string ToString(NZazuCoordinate c)
+    {
+        return c?.ToString() ?? string.Empty;
+    }
 
-        public bool CanOpenGeoApp { get; } = true;
-
-        public Task OpenGeoApp(NZazuCoordinate c)
-        {
-            return Task.Run(() => Process.Start($"https://www.google.com/maps/place/@{c.Lat},{c.Lon},14z"));
-        }
-
-        public string ToString(NZazuCoordinate c)
-        {
-            return c?.ToString() ?? string.Empty;
-        }
-
-        public NZazuCoordinate Parse(string source)
-        {
-            if (string.IsNullOrEmpty(source)) return null;
-            return NZazuCoordinate.Parse(source);
-        }
+    public NZazuCoordinate Parse(string source)
+    {
+        if (string.IsNullOrEmpty(source)) return null;
+        return NZazuCoordinate.Parse(source);
     }
 }

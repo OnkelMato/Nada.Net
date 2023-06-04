@@ -1,7 +1,6 @@
-namespace Nada.NZazu
+namespace Nada.NZazu;
+
+public interface IResolveFromName<out T>
 {
-    public interface IResolveFromName<out T>
-    {
-        T Resolve(string name);
-    }
+    T Resolve(string name);
 }

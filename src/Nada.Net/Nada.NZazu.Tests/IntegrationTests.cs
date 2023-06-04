@@ -14,12 +14,12 @@ public class IntegrationTests
     {
         var def = new[]
         {
-            new FieldDefinition() { Key = "k1", Type = "dateonly", Prompt = "Date only" },
-            new FieldDefinition() { Key = "k2", Type = "string", Prompt = "Some Text" }
+            new FieldDefinition { Key = "k1", Type = "dateonly", Prompt = "Date only" },
+            new FieldDefinition { Key = "k2", Type = "string", Prompt = "Some Text" }
         };
 
         var view = new NZazuView();
-        view.FormDefinition = new FormDefinition() { Fields = def };
+        view.FormDefinition = new FormDefinition { Fields = def };
 
         var window = new Window();
         window.Content = view;

@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace Nada.NZazu.Contracts.Suggest
+namespace Nada.NZazu.Contracts.Suggest;
+
+public interface IProvideSuggestions
 {
-    public interface IProvideSuggestions
-    {
-        IEnumerable<string> For(string prefix, string dataconnection);
-    }
+    IEnumerable<string> For(string prefix, string dataconnection);
 }

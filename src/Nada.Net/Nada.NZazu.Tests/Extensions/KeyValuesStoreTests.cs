@@ -2,56 +2,55 @@
 using Nada.NZazu.Extensions;
 using NUnit.Framework;
 
-namespace Nada.NZazu.Tests.Extensions
+namespace Nada.NZazu.Tests.Extensions;
+
+[TestFixture]
+// ReSharper disable once InconsistentNaming
+public class KeyValuesStoreTests
 {
-    [TestFixture]
-    // ReSharper disable once InconsistentNaming
-    public class KeyValuesStoreTests
+    [Test]
+    public void Be_Creatable_And_Empty()
     {
-        [Test]
-        public void Be_Creatable_And_Empty()
-        {
-            var sut = new KeyValuesStore();
+        var sut = new KeyValuesStore();
 
-            sut.Should().NotBeNull();
-            sut.GetValues("foo").Should().BeEmpty();
-            sut.GetValues("").Should().BeEmpty();
+        sut.Should().NotBeNull();
+        sut.GetValues("foo").Should().BeEmpty();
+        sut.GetValues("").Should().BeEmpty();
 
-            Action tryGetNull = () => { sut.GetValues(null); };
+        var tryGetNull = () => { sut.GetValues(null); };
 
-            tryGetNull.Should().Throw<ArgumentNullException>();
-        }
+        tryGetNull.Should().Throw<ArgumentNullException>();
+    }
 
-        [Test]
-        public void Add_And_Return_Values()
-        {
-            var sut = new KeyValuesStore();
+    [Test]
+    public void Add_And_Return_Values()
+    {
+        var sut = new KeyValuesStore();
 
-            sut.Add("name", "jane");
-            sut.Add("name", "john");
+        sut.Add("name", "jane");
+        sut.Add("name", "john");
 
-            var values = sut.GetValues("name").ToArray();
+        var values = sut.GetValues("name").ToArray();
 
-            values.Count().Should().Be(2);
-            values.Should().Contain("jane");
-            values.Should().Contain("john");
-        }
+        values.Count().Should().Be(2);
+        values.Should().Contain("jane");
+        values.Should().Contain("john");
+    }
 
-        [Test]
-        public void Return_All_On_Empty_Key()
-        {
-            var sut = new KeyValuesStore();
+    [Test]
+    public void Return_All_On_Empty_Key()
+    {
+        var sut = new KeyValuesStore();
 
-            sut.Add("name", "jane");
-            sut.Add("name", "john");
-            sut.Add("lastname", "smith");
+        sut.Add("name", "jane");
+        sut.Add("name", "john");
+        sut.Add("lastname", "smith");
 
-            var values = sut.GetValues(string.Empty).ToArray();
+        var values = sut.GetValues(string.Empty).ToArray();
 
-            values.Count().Should().Be(3);
-            values.Should().Contain("jane");
-            values.Should().Contain("john");
-            values.Should().Contain("smith");
-        }
+        values.Count().Should().Be(3);
+        values.Should().Contain("jane");
+        values.Should().Contain("john");
+        values.Should().Contain("smith");
     }
 }

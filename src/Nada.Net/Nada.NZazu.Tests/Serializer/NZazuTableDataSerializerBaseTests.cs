@@ -2,91 +2,90 @@
 using Nada.NZazu.Serializer;
 using NUnit.Framework;
 
-namespace Nada.NZazu.Tests.Serializer
+namespace Nada.NZazu.Tests.Serializer;
+
+[TestFixture]
+// ReSharper disable once InconsistentNaming
+public class NZazuTableDataSerializerBaseTests
 {
-    [TestFixture]
-    // ReSharper disable once InconsistentNaming
-    public class NZazuTableDataSerializerBaseTests
+    private static Dictionary<string, string> GetTableData()
     {
-        private static Dictionary<string, string> GetTableData()
+        return new Dictionary<string, string>
         {
-            return new Dictionary<string, string>
-            {
-                {"table01_field01__1", "hello"}, {"table01_field02__1", "world"},
-                {"table01_field01__2", "foo"}, {"table01_field02__2", "bar"}
-            };
-        }
+            { "table01_field01__1", "hello" }, { "table01_field02__1", "world" },
+            { "table01_field01__2", "foo" }, { "table01_field02__2", "bar" }
+        };
+    }
 
-        [Test]
-        public void Add_Row_To_Dictionary()
+    [Test]
+    public void Add_Row_To_Dictionary()
+    {
+        var newRow = new Dictionary<string, string>
         {
-            var newRow = new Dictionary<string, string>
-            {
-                {"table01_field01", "jane"}, {"table01_field02", "doe"}
-            };
+            { "table01_field01", "jane" }, { "table01_field02", "doe" }
+        };
 
-            var data = GetTableData();
-            data.Count.Should().Be(4);
+        var data = GetTableData();
+        data.Count.Should().Be(4);
 
-            var sut = new NZazuTableDataSerializerBase();
-            sut.AddTableRow(data, newRow);
+        var sut = new NZazuTableDataSerializerBase();
+        sut.AddTableRow(data, newRow);
 
-            data.Count.Should().Be(6);
-            data.Should().Contain("table01_field01__3", "jane");
-            data.Should().Contain("table01_field02__3", "doe");
-        }
+        data.Count.Should().Be(6);
+        data.Should().Contain("table01_field01__3", "jane");
+        data.Should().Contain("table01_field02__3", "doe");
+    }
 
-        [Test]
-        public void Add_Row_To_Empty_Dictionary()
+    [Test]
+    public void Add_Row_To_Empty_Dictionary()
+    {
+        var newRow = new Dictionary<string, string>
         {
-            var newRow = new Dictionary<string, string>
-            {
-                {"table01_field01", "jane"}, {"table01_field02", "doe"}
-            };
+            { "table01_field01", "jane" }, { "table01_field02", "doe" }
+        };
 
-            var data = new Dictionary<string, string>();
-            data.Count.Should().Be(0);
+        var data = new Dictionary<string, string>();
+        data.Count.Should().Be(0);
 
-            var sut = new NZazuTableDataSerializerBase();
-            sut.AddTableRow(data, newRow);
+        var sut = new NZazuTableDataSerializerBase();
+        sut.AddTableRow(data, newRow);
 
-            data.Count.Should().Be(2);
-            data.Should().Contain("table01_field01__1", "jane");
-            data.Should().Contain("table01_field02__1", "doe");
-        }
+        data.Count.Should().Be(2);
+        data.Should().Contain("table01_field01__1", "jane");
+        data.Should().Contain("table01_field02__1", "doe");
+    }
 
-        [Test]
-        public void Not_Add_Empty_Row_To_Dictionary()
+    [Test]
+    public void Not_Add_Empty_Row_To_Dictionary()
+    {
+        var newRow = new Dictionary<string, string>();
+
+        var data = GetTableData();
+        data.Count.Should().Be(4);
+
+        var sut = new NZazuTableDataSerializerBase();
+        sut.AddTableRow(data, newRow);
+
+        data.Count.Should().Be(4);
+    }
+
+    [Test]
+    public void Override_Empty_Row()
+    {
+        var newRow = new Dictionary<string, string>
         {
-            var newRow = new Dictionary<string, string>();
+            { "table01_field01", "jane" },
+            { "table01_field02", "doe" }
+        };
 
-            var data = GetTableData();
-            data.Count.Should().Be(4);
+        var data = new Dictionary<string, string> { { "table01_field01__1", "" }, { "table01_field02__1", null } };
+        data.Count.Should().Be(2);
 
-            var sut = new NZazuTableDataSerializerBase();
-            sut.AddTableRow(data, newRow);
+        var sut = new NZazuTableDataSerializerBase();
+        sut.AddTableRow(data, newRow);
 
-            data.Count.Should().Be(4);
-        }
-
-        [Test]
-        public void Override_Empty_Row()
-        {
-            var newRow = new Dictionary<string, string>
-            {
-                {"table01_field01", "jane"},
-                {"table01_field02", "doe"}
-            };
-
-            var data = new Dictionary<string, string> {{"table01_field01__1", ""}, {"table01_field02__1", null}};
-            data.Count.Should().Be(2);
-
-            var sut = new NZazuTableDataSerializerBase();
-            sut.AddTableRow(data, newRow);
-
-            data.Count.Should().Be(2);
-            data.Should().Contain("table01_field01__1", "jane");
-            data.Should().Contain("table01_field02__1", "doe");
-        }
+        data.Count.Should().Be(2);
+        data.Should().Contain("table01_field01__1", "jane");
+        data.Should().Contain("table01_field02__1", "doe");
     }
 }

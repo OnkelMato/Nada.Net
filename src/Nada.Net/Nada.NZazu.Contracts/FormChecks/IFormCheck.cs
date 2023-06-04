@@ -1,10 +1,9 @@
 ﻿using System;
 using Nada.NZazu.Contracts.Checks;
 
-namespace Nada.NZazu.Contracts.FormChecks
+namespace Nada.NZazu.Contracts.FormChecks;
+
+public interface IFormCheck
 {
-    public interface IFormCheck
-    {
-        ValueCheckResult Validate(FormData formData, IFormatProvider formatProvider = null);
-    }
+    ValueCheckResult Validate(FormData formData, IFormatProvider formatProvider = null);
 }

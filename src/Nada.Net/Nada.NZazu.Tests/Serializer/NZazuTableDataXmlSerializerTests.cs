@@ -3,64 +3,63 @@ using Nada.NZazu.Contracts;
 using Nada.NZazu.Serializer;
 using NUnit.Framework;
 
-namespace Nada.NZazu.Tests.Serializer
+namespace Nada.NZazu.Tests.Serializer;
+
+[TestFixture]
+// ReSharper disable once InconsistentNaming
+public class NZazuTableDataXmlSerializerTests
 {
-    [TestFixture]
-    // ReSharper disable once InconsistentNaming
-    public class NZazuTableDataXmlSerializerTests
+    [Test]
+    public void Be_Creatable()
     {
-        [Test]
-        public void Be_Creatable()
+        var sut = new NZazuTableDataXmlSerializer();
+
+        sut.Should().NotBeNull();
+        sut.Should().BeAssignableTo<INZazuTableDataSerializer>();
+    }
+
+    [Test]
+    public void Be_Symetric()
+    {
+        var data = new Dictionary<string, string>
         {
-            var sut = new NZazuTableDataXmlSerializer();
+            { "Jane", "Doe" },
+            { "John", "Smith" }
+        };
 
-            sut.Should().NotBeNull();
-            sut.Should().BeAssignableTo<INZazuTableDataSerializer>();
-        }
+        var sut = new NZazuTableDataXmlSerializer();
 
-        [Test]
-        public void Be_Symetric()
-        {
-            var data = new Dictionary<string, string>
-            {
-                {"Jane", "Doe"},
-                {"John", "Smith"}
-            };
+        var actual = sut.Serialize(data);
+        var expected = sut.Deserialize(actual);
 
-            var sut = new NZazuTableDataXmlSerializer();
+        foreach (var item in data)
+            expected.Should().Contain(item);
+    }
 
-            var actual = sut.Serialize(data);
-            var expected = sut.Deserialize(actual);
+    [Test]
+    public void Handle_Empty_Symetric()
+    {
+        var data = new Dictionary<string, string>();
+        var sut = new NZazuTableDataXmlSerializer();
 
-            foreach (var item in data)
-                expected.Should().Contain(item);
-        }
+        var actual = sut.Serialize(data);
+        var expected = sut.Deserialize(actual);
 
-        [Test]
-        public void Handle_Empty_Symetric()
-        {
-            var data = new Dictionary<string, string>();
-            var sut = new NZazuTableDataXmlSerializer();
+        expected.Should().NotBeNull();
+        expected.Count.Should().Be(0);
+    }
 
-            var actual = sut.Serialize(data);
-            var expected = sut.Deserialize(actual);
+    [Test]
+    [TestCase(null)]
+    [TestCase("")]
+    [TestCase("         ")]
+    public void Handle_Empty_Stuff(string data)
+    {
+        var sut = new NZazuTableDataXmlSerializer();
 
-            expected.Should().NotBeNull();
-            expected.Count.Should().Be(0);
-        }
+        var expected = sut.Deserialize(data);
 
-        [Test]
-        [TestCase(null)]
-        [TestCase("")]
-        [TestCase("         ")]
-        public void Handle_Empty_Stuff(string data)
-        {
-            var sut = new NZazuTableDataXmlSerializer();
-
-            var expected = sut.Deserialize(data);
-
-            expected.Should().NotBeNull();
-            expected.Count.Should().Be(0);
-        }
+        expected.Should().NotBeNull();
+        expected.Count.Should().Be(0);
     }
 }

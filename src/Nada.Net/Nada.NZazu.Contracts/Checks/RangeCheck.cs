@@ -4,58 +4,55 @@ using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 
-namespace Nada.NZazu.Contracts.Checks
+namespace Nada.NZazu.Contracts.Checks;
+
+[DisplayName("range")]
+public class RangeCheck : IValueCheck
 {
-    [DisplayName("range")]
-    public class RangeCheck : IValueCheck
+    private readonly ValueCheckResult _notAValidNumber =
+        new(false, new ArgumentException("The specified value is not a number"));
+
+    private readonly ValueCheckResult _outOfRange;
+
+    internal readonly RangeCheckSettings Settings;
+
+    internal class RangeCheckSettings
     {
-        private readonly ValueCheckResult _notAValidNumber =
-            new ValueCheckResult(false, new ArgumentException("The specified value is not a number"));
+        public string Min { private get; set; }
+        public string Max { private get; set; }
 
-        private readonly ValueCheckResult _outOfRange;
+        public int MinInt => Convert.ToInt32(Min ?? "0");
+        public int MaxInt => Convert.ToInt32(Max ?? int.MaxValue.ToString());
+    } // ReSharper disable UnusedParameter.Local
+    public RangeCheck(
+        IDictionary<string, string> settings, Func<FormData> formData,
+        INZazuTableDataSerializer tableSerializer, int rowIdx,
+        FieldDefinition fieldDefinition)
+    {
+        Settings = settings.ToDictionary(x => x.Key, x => (object)x.Value).ToObject<RangeCheckSettings>();
 
-        internal readonly RangeCheckSettings Settings;
+        if (Settings.MinInt < 0)
+            throw new ArgumentOutOfRangeException(nameof(Settings.Min),
+                $"The specified value must be between {Settings.MinInt} and {Settings.MaxInt}");
+        if (Settings.MaxInt < Settings.MinInt)
+            throw new ArgumentOutOfRangeException(
+                $"min={Settings.MinInt} must be less than or equal to max={Settings.MaxInt}.");
 
-        internal class RangeCheckSettings
-        {
-            public string Min { private get; set; }
-            public string Max { private get; set; }
+        _outOfRange = new ValueCheckResult(false, new ArgumentOutOfRangeException(
+            $"The specified value must be between {Settings.MinInt} and {Settings.MaxInt}"));
+    }
 
-            public int MinInt => Convert.ToInt32(Min ?? "0");
-            public int MaxInt => Convert.ToInt32(Max ?? int.MaxValue.ToString());
-        }
+    public ValueCheckResult Validate(string value, object parsedValue, IFormatProvider formatProvider = null)
+    {
+        if (string.IsNullOrWhiteSpace(value)) return ValueCheckResult.Success;
 
-        // ReSharper disable UnusedParameter.Local
-        public RangeCheck(
-            IDictionary<string, string> settings, Func<FormData> formData,
-            INZazuTableDataSerializer tableSerializer, int rowIdx,
-            FieldDefinition fieldDefinition)
-        {
-            Settings = settings.ToDictionary(x => x.Key, x => (object) x.Value).ToObject<RangeCheckSettings>();
+        var safeFormatProvider = formatProvider ?? CultureInfo.InvariantCulture;
+        if (!double.TryParse(value, NumberStyles.Number, safeFormatProvider, out var result))
+            return _notAValidNumber;
 
-            if (Settings.MinInt < 0)
-                throw new ArgumentOutOfRangeException(nameof(Settings.Min),
-                    $"The specified value must be between {Settings.MinInt} and {Settings.MaxInt}");
-            if (Settings.MaxInt < Settings.MinInt)
-                throw new ArgumentOutOfRangeException(
-                    $"min={Settings.MinInt} must be less than or equal to max={Settings.MaxInt}.");
+        if (result < Settings.MinInt || result > Settings.MaxInt)
+            return _outOfRange;
 
-            _outOfRange = new ValueCheckResult(false, new ArgumentOutOfRangeException(
-                $"The specified value must be between {Settings.MinInt} and {Settings.MaxInt}"));
-        }
-
-        public ValueCheckResult Validate(string value, object parsedValue, IFormatProvider formatProvider = null)
-        {
-            if (string.IsNullOrWhiteSpace(value)) return ValueCheckResult.Success;
-
-            var safeFormatProvider = formatProvider ?? CultureInfo.InvariantCulture;
-            if (!double.TryParse(value, NumberStyles.Number, safeFormatProvider, out var result))
-                return _notAValidNumber;
-
-            if (result < Settings.MinInt || result > Settings.MaxInt)
-                return _outOfRange;
-
-            return ValueCheckResult.Success;
-        }
+        return ValueCheckResult.Success;
     }
 }

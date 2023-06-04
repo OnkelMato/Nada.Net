@@ -2,19 +2,18 @@ using FluentAssertions;
 using Nada.NZazu.Fields;
 using NUnit.Framework;
 
-namespace Nada.NZazu.Tests.Fields
-{
-    [TestFixture]
-    // ReSharper disable once InconsistentNaming
-    public class FieldFactoryExtensionsTests
-    {
-        [Test]
-        public void Be_Static()
-        {
-            var type = typeof(FieldFactoryExtensions);
+namespace Nada.NZazu.Tests.Fields;
 
-            type.IsAbstract.Should().BeTrue();
-            type.IsSealed.Should().BeTrue();
-        }
+[TestFixture]
+// ReSharper disable once InconsistentNaming
+public class FieldFactoryExtensionsTests
+{
+    [Test]
+    public void Be_Static()
+    {
+        var type = typeof(FieldFactoryExtensions);
+
+        type.IsAbstract.Should().BeTrue();
+        type.IsSealed.Should().BeTrue();
     }
 }
